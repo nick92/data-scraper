@@ -1,19 +1,23 @@
 package main
 
 import (
-	// import standard libraries
 	"encoding/json"
 	"fmt"
+	"golang.org/x/net/proxy"
 	"io/ioutil"
 	"log"
+	"net/http"
+	"regexp"
+)
 
-	// import third party libraries
-	"github.com/PuerkitoBio/goquery"
-	"golang.org/x/net/proxy"
+const (
+	settingsConfig = "config.json"
+	scrapingJSON   = "scraping.json"
+	outputJSON     = "output.json"
 )
 
 func readSettingsJSON() {
-	data, err := ioutil.ReadFile("config.json")
+	data, err := ioutil.ReadFile(settingsConfig)
 	if err != nil {
 		log.Println(err)
 	}
@@ -22,7 +26,7 @@ func readSettingsJSON() {
 }
 
 func readScrapingJSON() {
-	data, err := ioutil.ReadFile("scraping.json")
+	data, err := ioutil.ReadFile(scrapingJSON)
 	if err != nil {
 		log.Println(err)
 	}
@@ -32,6 +36,14 @@ func readScrapingJSON() {
 
 func scraper() {
 	fmt.Println("Test")
+}
+
+func writeToFile() {
+	message := []byte("Hello, Gophers!")
+	err := ioutil.WriteFile(outputJSON, message, 0644)
+	if err != nil {
+		log.Println(err)
+	}
 }
 
 func main() {
