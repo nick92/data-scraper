@@ -20,4 +20,4 @@ jobs:
       - name: Build Test
         run: go build -v .
       - name: Run the build
-        run: ./data-scraper
+        run: ./Data-Scraper
