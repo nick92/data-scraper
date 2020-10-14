@@ -1,48 +1,29 @@
 {
-    "_id": "objectif_patch",
-    "startUrl": [
-        "https://github.com/piercus?utf8=✓&tab=repositories&q=&type=source&language="
-    ],
-    "selectors": [
-        {
-            "id": "repo_1",
-            "type": "SelectorLink",
-            "parentSelectors": [
-                "_root"
-            ],
-            "selector": "li.col-12:nth-of-type(1) 1 a",
-            "multiple": false,
-            "delay": 0
-        },
-        {
-            "id": "commits",
-            "type": "SelectorLink",
-            "parentSelectors": [
-                "repo_1"
-            ],
-            "selector": "li.commits a",
-            "multiple": false,
-            "delay": 0
-        },
-        {
-            "id": "listing",
-            "type": "SelectorElement",
-            "parentSelectors": [
-                "commits"
-            ],
-            "selector": "div.commit-links-cell",
-            "multiple": true,
-            "delay": 0
-        },
-        {
-            "id": "objectif_path",
-            "type": "SelectorLink",
-            "parentSelectors": [
-                "listing"
-            ],
-            "selector": "a.sha",
-            "multiple": false,
-            "delay": 0
-        }
-    ]
+  "_id": "prajwalkoirala.com",
+  "startUrl": [
+    "https://www.prajwalkoirala.com"
+  ],
+  "selectors": [
+    {
+      "id": "name",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "_root"
+      ],
+      "selector": "h1",
+      "multiple": false,
+      "regex": "",
+      "delay": 0
+    },
+    {
+      "id": "picture",
+      "type": "SelectorImage",
+      "parentSelectors": [
+        "_root"
+      ],
+      "selector": "img",
+      "multiple": false,
+      "delay": 0
+    }
+  ]
 }
