@@ -1,22 +1,34 @@
 ### Data Scraper
 
 ---
+### Installation
+Lets first use `git` to download this repo
+```
+git clone https://github.com/complexorganizations/Data-Scraper.git
+```
+Than lets configure the scraper
+
+---
 ### Features
+- Distributed scraping
+- Concurrency scraping
+- JavaScript rendering
+- Proxy support
 -
 
 ---
 ### Q&A
 
-How
--
+How do i use this?
+- Download the webscraper.io extension, develop the scraper using the extension, export the scraper json rules after creating the scraper.
 
-Which
+How 
 -
 
 Is
 -
 
-How 
+How
 -
 
 ---
