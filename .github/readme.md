@@ -2,24 +2,15 @@
 
 ---
 ### Features
-- 
-- 
-- 
-- 
+-
 
 ---
 ### Q&A
 
 How
-- 
-- 
-- 
-- 
+-
 
 Which
-- 
-- 
-- 
 -
 
 Is
@@ -29,7 +20,7 @@ How
 -
 
 ---
-### 👤 Author
+### Author
 
 * Name: Prajwal Koirala
 * Website: https://www.prajwalkoirala.com
@@ -39,9 +30,8 @@ How
 * Reddit: [@prajwalkoirala23](https://www.reddit.com/user/prajwalkoirala23)
 * Twitch: [@prajwalkoirala23](https://www.twitch.tv/prajwalkoirala23)
 
-
 ---
-### 📝 License
+### License
 
 Copyright © 2020 [Prajwal](https://github.com/prajwal-koirala)
 
