@@ -12,7 +12,7 @@
       ],
       "selector": "h1",
       "multiple": false,
-      "regex": "",
+      "regex": "jjj",
       "delay": 0
     },
     {

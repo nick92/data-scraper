@@ -6,8 +6,8 @@ import (
 	// "golang.org/x/net/proxy"
 	"io/ioutil"
 	"log"
-	//"net/http"
-	//"regexp"
+	"net/http"
+	"regexp"
 )
 
 const (
@@ -43,26 +43,47 @@ func readSettingsJSON() {
 }
 
 func readScrapingJSON() {
+	// open the file and read the file
 	data, err := ioutil.ReadFile(scrapingJSON)
 	// define data struture
 	type Scraping struct {
-		startURL	string
+		startURL string
+		regex    string
 	}
 	// define data struture
 	var scrape Scraping
-    err = json.Unmarshal(data, &scrape)
+	err = json.Unmarshal(data, &scrape)
 	// log any errors
 	if err != nil {
 		log.Println(err)
 	}
 	// lets just print for now
-	fmt.Println(scrape.startURL)
+	fmt.Println(scrape.regex)
 	// run the scraper and start scraping.
 	// scraper()
 }
 
 func scraper() {
-	fmt.Println("Test")
+	response, err := http.Get("https://www.devdungeon.com")
+	if err != nil {
+		log.Println(err)
+	}
+	defer response.Body.Close()
+	// Read response data in to memory
+	body, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		log.Println(err)
+	}
+	// Create a regular expression to find comments
+	re := regexp.MustCompile("<!--(.|\n)*?-->")
+	comments := re.FindAllString(string(body), -1)
+	if comments == nil {
+		fmt.Println("No matches.")
+	} else {
+		for _, comment := range comments {
+			fmt.Println(comment)
+		}
+	}
 }
 
 func writeToFile() {
