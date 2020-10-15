@@ -1,5 +1,7 @@
 ### Data Scraper
 
+Data Scraper is a super fast crawler, scraper used to scrape and extract data from anywhere. Its used to scrape data from wide ranges of applications.
+
 ---
 ### Installation
 Lets first use `git` to download this repo
@@ -10,11 +12,12 @@ Than lets configure the scraper
 
 ---
 ### Features
+- Unlimited scraping ***NO LIMITS***
 - Distributed scraping
 - Concurrency scraping
 - JavaScript rendering
 - Proxy support
--
+- Exports to JSON|CSV|XML
 
 ---
 ### Q&A
@@ -22,14 +25,17 @@ Than lets configure the scraper
 How do i use this?
 - Download the webscraper.io extension, develop the scraper using the extension, export the scraper json rules after creating the scraper.
 
-How 
--
+How fast is this?
+- On our test, its about >3k request a min.
 
-Is
--
+How many website can it scrape?
+- This will scrape as many domains as you like.
 
-How
--
+How do i configure the scraper?
+- Open the settings file `config.json` and change the scraper settings there.
+
+How do i change what it scrapes?
+- You can change what the scraper scrapes using `scraping.json`
 
 ---
 ### Author
