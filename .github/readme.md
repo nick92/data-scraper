@@ -20,7 +20,7 @@ After configuring the scraper you can copy your scraper rules to `scraping.json`
 ```
 {"_id":"prajwalkoirala.com","startUrl":["https://www.prajwalkoirala.com"],"selectors":[{"id":"name","type":"SelectorText","parentSelectors":["_root"],"selector":"h1","multiple":false,"regex":"","delay":0},{"id":"picture","type":"SelectorImage","parentSelectors":["_root"],"selector":"img","multiple":false,"delay":0}]}
 ```
-After setting the `scraping.json` you can finally run the scraper.
+You can finally run the scraper.
 ```
 ./Data-Scraper
 ```
