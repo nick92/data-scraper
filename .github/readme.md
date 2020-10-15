@@ -33,7 +33,7 @@ You can finally run the scraper.
 - JavaScript rendering
 - Dynamic applications
 - Proxy support
-- Exports to JSON|CSV|XML
+- Exports to JSON
 
 ---
 ### Q&A
