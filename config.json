@@ -4,5 +4,6 @@
     "Proxy Lists": [
         "127.0.0.1:8080"
     ],
-    "Rotating Proxy": false
+    "Rotating Proxy": false,
+    "Export": "json"
 }
