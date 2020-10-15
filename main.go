@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	settingsConfig = "config.json"
+	settingsConfig = "settings.json"
 	scrapingJSON   = "scraping.json"
 	outputJSON     = "output.json"
 )
@@ -34,6 +34,7 @@ func readSettingsJSON() {
 	if err != nil {
 		log.Println(err)
 	}
+	// just priting it
 	fmt.Println("JavaScript: ", settings.JavaScript)
 	fmt.Println("Proxy: ", settings.Proxy)
 	fmt.Println("ProxyLists: ", settings.ProxyLists)
@@ -45,9 +46,19 @@ func readScrapingJSON() {
 	data, err := ioutil.ReadFile(scrapingJSON)
 	// define data struture
 	type Scraping struct {
-		startURL    string
-		id	string
+		startURL	string
 	}
+	// define data struture
+	var scrape Scraping
+    err = json.Unmarshal(data, &scrape)
+	// log any errors
+	if err != nil {
+		log.Println(err)
+	}
+	// lets just print for now
+	fmt.Println(scrape.startURL)
+	// run the scraper and start scraping.
+	// scraper()
 }
 
 func scraper() {

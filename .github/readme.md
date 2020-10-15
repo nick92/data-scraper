@@ -8,12 +8,12 @@ Lets first use `git` to download this repo
 ```
 git clone https://github.com/complexorganizations/Data-Scraper.git
 ```
-Than lets configure the scraper, open the `config.json`
+Than lets configure the scraper, open the `settings.json`
 ```
 JavaScript [true,false]
 Proxy [true,false]
-Proxy Lists ["127.0.0.1:8080","localhost:8080"]
-Rotating Proxy [true,false]
+ProxyLists ["127.0.0.1:8080","localhost:8080"]
+RotatingProxy [true,false]
 Export ["json"]
 ```
 After configuring the scraper you can copy your scraper rules to `scraping.json`
