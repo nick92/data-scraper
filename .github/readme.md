@@ -14,7 +14,7 @@ JavaScript [true,false]
 Proxy [true,false]
 Proxy Lists ["127.0.0.1:8080","localhost:8080"]
 Rotating Proxy [true,false]
-Export ["json","csv","xml"]
+Export ["json"]
 ```
 After configuring the scraper you can copy your scraper rules to `scraping.json`
 ```
@@ -30,10 +30,10 @@ You can finally run the scraper.
 - Unlimited scraping ***NO LIMITS***
 - Distributed scraping
 - Concurrency scraping
-- JavaScript rendering
+- JavaScript rendering ***(Coming Soon)***
 - Dynamic applications
-- Proxy support
-- Exports to JSON
+- Proxy support ***(Coming Soon)***
+- Exports to JSON ***Support for CSV|XML (Coming Soon)***
 
 ---
 ### Q&A

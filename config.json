@@ -1,9 +1,9 @@
 {
     "JavaScript": false,
     "Proxy": false,
-    "Proxy Lists": [
+    "ProxyLists": [
         "127.0.0.1:8080"
     ],
-    "Rotating Proxy": false,
+    "RotatingProxy": false,
     "Export": "json"
 }

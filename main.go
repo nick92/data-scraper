@@ -2,14 +2,12 @@ package main
 
 import (
 	"encoding/json"
-	"encoding/csv"
-	"encoding/xml"
 	"fmt"
-	"golang.org/x/net/proxy"
+	// "golang.org/x/net/proxy"
 	"io/ioutil"
 	"log"
-	"net/http"
-	"regexp"
+	//"net/http"
+	//"regexp"
 )
 
 const (
@@ -19,21 +17,37 @@ const (
 )
 
 func readSettingsJSON() {
+	// open the file and read the file
 	data, err := ioutil.ReadFile(settingsConfig)
+	// define data struture
+	type Config struct {
+		JavaScript    bool
+		Proxy         bool
+		ProxyLists    []string
+		RotatingProxy bool
+		Export        string
+	}
+	// json data
+	var settings Config
+	err = json.Unmarshal(data, &settings)
+	// log any errors
 	if err != nil {
 		log.Println(err)
 	}
-	fmt.Println("Contents of file:", string(data))
-	readScrapingJSON()
+	fmt.Println("JavaScript: ", settings.JavaScript)
+	fmt.Println("Proxy: ", settings.Proxy)
+	fmt.Println("ProxyLists: ", settings.ProxyLists)
+	fmt.Println("RotatingProxy: ", settings.RotatingProxy)
+	fmt.Println("Export: ", settings.Export)
 }
 
 func readScrapingJSON() {
 	data, err := ioutil.ReadFile(scrapingJSON)
-	if err != nil {
-		log.Println(err)
+	// define data struture
+	type Scraping struct {
+		startURL    string
+		id	string
 	}
-	fmt.Println("Contents of file:", string(data))
-	scraper()
 }
 
 func scraper() {
@@ -49,5 +63,5 @@ func writeToFile() {
 }
 
 func main() {
-	readSettingsJSON()
+	readScrapingJSON()
 }
