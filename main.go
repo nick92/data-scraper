@@ -47,8 +47,9 @@ func readScrapingJSON() {
 	data, err := ioutil.ReadFile(scrapingJSON)
 	// define data struture
 	type Scraping struct {
-		startURL string
-		regex    string
+		startUrl []string
+		id    string
+		parentSelectors []string
 	}
 	// define data struture
 	var scrape Scraping
@@ -58,7 +59,7 @@ func readScrapingJSON() {
 		log.Println(err)
 	}
 	// lets just print for now
-	fmt.Println(scrape.regex)
+	fmt.Println("id", scrape.startUrl)
 	// run the scraper and start scraping.
 	// scraper()
 }
