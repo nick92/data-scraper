@@ -31,6 +31,7 @@ After setting the `scraping.json` you can finally run the scraper.
 - Distributed scraping
 - Concurrency scraping
 - JavaScript rendering
+- Dynamic applications
 - Proxy support
 - Exports to JSON|CSV|XML
 
