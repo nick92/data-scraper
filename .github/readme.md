@@ -8,7 +8,22 @@ Lets first use `git` to download this repo
 ```
 git clone https://github.com/complexorganizations/Data-Scraper.git
 ```
-Than lets configure the scraper
+Than lets configure the scraper, open the `config.json`
+```
+JavaScript [true,false]
+Proxy [true,false]
+Proxy Lists ["127.0.0.1:8080","localhost:8080"]
+Rotating Proxy [true,false]
+Export ["json","csv","xml"]
+```
+After configuring the scraper you can copy your scraper rules to `scraping.json`
+```
+{"_id":"prajwalkoirala.com","startUrl":["https://www.prajwalkoirala.com"],"selectors":[{"id":"name","type":"SelectorText","parentSelectors":["_root"],"selector":"h1","multiple":false,"regex":"","delay":0},{"id":"picture","type":"SelectorImage","parentSelectors":["_root"],"selector":"img","multiple":false,"delay":0}]}
+```
+After setting the `scraping.json` you can finally run the scraper.
+```
+./Data-Scraper
+```
 
 ---
 ### Features
