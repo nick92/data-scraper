@@ -49,8 +49,8 @@ func readScrapingJSON() {
 	data, err := ioutil.ReadFile(scrapingJSON)
 	// define data struture
 	type Scraping struct {
-		startUrl []string
-		id    string
+		startUrl        []string
+		id              string
 		parentSelectors []string
 	}
 	// define data struture
