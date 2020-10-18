@@ -130,14 +130,13 @@ func crawlURL(href string) *goquery.Document {
 	response, err := netClient.Get(href)
 	if err != nil {
 		log.Println(err)
-		os.Exit(1)
 	}
 	defer response.Body.Close()
 
 	// Load the HTML document
 	doc, err := goquery.NewDocumentFromReader(response.Body)
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 	}
 
 	return doc
