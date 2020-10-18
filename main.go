@@ -127,7 +127,6 @@ func SelectorLink(doc *goquery.Document, selector *Selectors, baseURL string) []
 }
 
 func crawlURL(href string) *goquery.Document {
-	fmt.Printf("Crawling Url -> %v \n", href)
 	response, err := netClient.Get(href)
 	if err != nil {
 		log.Println(err)
@@ -207,7 +206,6 @@ func main() {
 		return
 	}
 
-	fmt.Println(string(file))
 	_ = ioutil.WriteFile(outputJSON, file, 0644)
 
 }
