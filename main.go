@@ -1,28 +1,39 @@
 package main
 
 import (
+	"crypto/tls"
 	"encoding/json"
-	"os"
-	"regexp"
-	"strings"
-
-	// "encoding/csv"
-	// "encoding/xml"
 	"fmt"
-	// "golang.org/x/net/proxy"
 	"io/ioutil"
 	"log"
 	"net/http"
+	"net/url"
+	"os"
+	"regexp"
+
+	"github.com/PuerkitoBio/goquery"
 )
 
 const (
 	settingsConfig = "settings.json"
-	scrapingJSON   = "scraping.json"
+	scrapingJSON   = "stackover-flow.json"
 	outputJSON     = "output.json"
 )
 
+var (
+	config = &tls.Config{
+		InsecureSkipVerify: true,
+	}
+	transport = &http.Transport{
+		TLSClientConfig: config,
+	}
+	netClient = &http.Client{
+		Transport: transport,
+	}
+)
+
 type Selectors struct {
-	Id              string
+	ID              string
 	Type            string
 	ParentSelectors []string
 	Selector        string
@@ -33,7 +44,7 @@ type Selectors struct {
 
 type Scraping struct {
 	StartUrl  []string
-	Id        string
+	ID        string `json:"_id,omitempty"`
 	Selectors []Selectors
 }
 
@@ -63,105 +74,140 @@ func readSettingsJSON() {
 	fmt.Println("Export: ", settings.Export)
 }
 
-func readScrapingJSON() *Scraping {
+func readSiteMap() *Scraping {
 	// open the file and read the file
 	data, err := ioutil.ReadFile(scrapingJSON)
 
 	var scrape Scraping
 	err = json.Unmarshal(data, &scrape)
-	// fmt.Printf("id = %v\n", scrape.Id)
-	// fmt.Printf("url = %v\n", scrape.StartUrl)
-	// fmt.Printf("PS = %v\n\n", scrape.Selectors)
+
 	// log any errors
 	if err != nil {
 		log.Println(err)
 	}
 
 	return &scrape
-	// lets just print for now
-	// fmt.Println("id", scrape.startUrl)
-	// run the scraper and start scraping.
-	// scraper()
 }
 
-func scraper() {
-	scrapingJson := readScrapingJSON()
-	fmt.Printf("url = %v\n", scrapingJson.StartUrl)
-	response, err := http.Get(scrapingJson.StartUrl[0])
-	if err != nil {
-		log.Println(err)
-	}
+func SelectorText(doc *goquery.Document, selector *Selectors) []string {
+	// Find the review items
+	// fmt.Println(selector.Selector)
+	var text []string
+	var matchText string
+	doc.Find(selector.Selector).Each(func(i int, s *goquery.Selection) {
 
-	defer response.Body.Close()
+		if selector.Regex != "" {
+			re := regexp.MustCompile(selector.Regex)
+			matchText = re.FindString(s.Text())
+		} else {
+			matchText = s.Text()
+		}
+		text = append(text, matchText)
+	})
+	return text
+}
 
-	// Get the response body as a string
-	dataInBytes, err := ioutil.ReadAll(response.Body)
-	pageContent := string(dataInBytes)
-
-	for _, selector := range scrapingJson.Selectors {
-		if selector.Type == "SelectorText" {
-			SelectorText(&pageContent, &selector)
-		} else if selector.Type == "SelectorImage" {
-			SelectorImage(&pageContent, &selector)
+func SelectorLink(doc *goquery.Document, selector *Selectors, baseURL string) []string {
+	// Find the review items
+	// fmt.Println(selector.Selector)
+	var links []string
+	doc.Find(selector.Selector).Each(func(i int, s *goquery.Selection) {
+		href, ok := s.Attr("href")
+		if !ok {
+			fmt.Printf("href not found")
 		}
 
-	}
+		links = append(links, toFixedURL(href, baseURL))
+		// if selector.Multiple == false {
+		// 	return false
+		// }
+		// return true
+	})
+	return links
 }
 
-func SelectorText(pageContent *string, selector *Selectors) {
-	titleStartIndex := 1
-	// Find a substr
-	// fmt.Println(pageContent)
-	titleStartIndex = strings.Index(*pageContent, "<"+selector.Selector+">")
-	if titleStartIndex == -1 {
-		fmt.Printf("%s : No element found", selector.Id)
-		os.Exit(0)
-	}
-	// The start index of the title is the index of the first
-	// character, the < symbol. We don't want to include
-	// <title> as part of the final value, so let's offset
-	// the index by the number of characers in <title>
-	titleStartIndex += len(selector.Selector) + 2
-
-	// Find the index of the closing tag
-	titleEndIndex := strings.Index(*pageContent, "</"+selector.Selector+">")
-	if titleEndIndex == -1 {
-		fmt.Printf("%s : No closing tag for title found.", selector.Id)
-		os.Exit(0)
-	}
-
-	// (Optional)
-	// Copy the substring in to a separate variable so the
-	// variables with the full document data can be garbage collected
-	pageTitle := []byte((*pageContent)[titleStartIndex:titleEndIndex])
-
-	// Print out the result
-	fmt.Printf("%s : %s\n", selector.Id, pageTitle)
-}
-
-func SelectorImage(pageContent *string, selector *Selectors) {
-
-	re := regexp.MustCompile("<img([\\w\\W]+?)>")
-	comments := re.FindAllString(*pageContent, -1)
-	re1 := regexp.MustCompile("src=([\\w\\W]+?) ")
-	comments = re1.FindAllString(comments[0], -1)
-	if comments == nil {
-		fmt.Printf("%s : No element found", selector.Id)
-		os.Exit(0)
-	}
-
-	// Print out the result
-	fmt.Printf("%s : %s\n", selector.Id, comments)
-}
-func writeToFile() {
-	message := []byte("Hello, Gophers!")
-	err := ioutil.WriteFile(outputJSON, message, 0644)
+func crawlURL(href string) *goquery.Document {
+	fmt.Printf("Crawling Url -> %v \n", href)
+	response, err := netClient.Get(href)
 	if err != nil {
 		log.Println(err)
+		os.Exit(1)
 	}
+	defer response.Body.Close()
+
+	// Load the HTML document
+	doc, err := goquery.NewDocumentFromReader(response.Body)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return doc
+}
+
+func toFixedURL(href, baseURL string) string {
+	uri, err := url.Parse(href)
+	if err != nil {
+		return ""
+	}
+
+	base, err := url.Parse(baseURL)
+	if err != nil {
+		return ""
+	}
+
+	toFixedURI := base.ResolveReference(uri)
+
+	return toFixedURI.String()
+}
+
+func getSiteMap(startURL []string, selector *Selectors) *Scraping {
+
+	baseSiteMap := readSiteMap()
+	newSiteMap := new(Scraping)
+	newSiteMap.ID = selector.ID
+	newSiteMap.StartUrl = startURL
+	newSiteMap.Selectors = baseSiteMap.Selectors
+	return newSiteMap
+}
+
+func scraper(siteMap *Scraping, parent string) interface{} {
+
+	output := make(map[string]interface{})
+	for _, startURL := range siteMap.StartUrl {
+		linkOutput := make(map[string]interface{})
+		for _, selector := range siteMap.Selectors {
+			if parent == selector.ParentSelectors[0] {
+				doc := crawlURL(startURL)
+				if selector.Type == "SelectorText" {
+					resultText := SelectorText(doc, &selector)
+					linkOutput[selector.ID] = resultText
+				} else if selector.Type == "SelectorLink" {
+					links := SelectorLink(doc, &selector, startURL)
+					fmt.Println(links)
+
+					newSiteMap := getSiteMap(links, &selector)
+					result := scraper(newSiteMap, selector.ID)
+					linkOutput[selector.ID] = result
+				}
+			}
+		}
+		output[startURL] = linkOutput
+	}
+	return output
 }
 
 func main() {
 	// readScrapingJSON()
-	scraper()
+	siteMap := readSiteMap()
+	finalOutput := scraper(siteMap, "_root")
+
+	file, err := json.MarshalIndent(finalOutput, "", " ")
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	fmt.Println(string(file))
+	_ = ioutil.WriteFile("output.json", file, 0644)
+
 }

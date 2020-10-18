@@ -1,0 +1,82 @@
+{
+  "_id": "ecommerce",
+  "startUrl": [
+    "https://www.webscraper.io/test-sites/e-commerce/allinone"
+  ],
+  "selectors": [
+    {
+      "id": "catagory-link",
+      "type": "SelectorLink",
+      "parentSelectors": [
+        "_root"
+      ],
+      "selector": "a.category-link",
+      "multiple": true,
+      "delay": 0
+    },
+    {
+      "id": "subcatagory-link",
+      "type": "SelectorLink",
+      "parentSelectors": [
+        "catagory-link"
+      ],
+      "selector": "a.subcategory-link",
+      "multiple": true,
+      "delay": 0
+    },
+    {
+      "id": "product-link",
+      "type": "SelectorLink",
+      "parentSelectors": [
+        "subcatagory-link"
+      ],
+      "selector": "a.title",
+      "multiple": false,
+      "delay": 0
+    },
+    {
+      "id": "name",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "product-link"
+      ],
+      "selector": "h4:nth-of-type(2)",
+      "multiple": false,
+      "regex": "",
+      "delay": 0
+    },
+    {
+      "id": "price",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "product-link"
+      ],
+      "selector": "h4.pull-right",
+      "multiple": true,
+      "regex": "",
+      "delay": 0
+    },
+    {
+      "id": "HDD",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "product-link"
+      ],
+      "selector": "button.btn",
+      "multiple": true,
+      "regex": "",
+      "delay": 0
+    },
+    {
+      "id": "Description",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "product-link"
+      ],
+      "selector": "p.description",
+      "multiple": false,
+      "regex": "",
+      "delay": 0
+    }
+  ]
+}

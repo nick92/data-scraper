@@ -1,0 +1,117 @@
+{
+    "_id": "voterrecords",
+    "startUrl": [
+      "https://voterrecords.com/voters"
+    ],
+    "selectors": [
+      {
+        "id": "details-selector",
+        "type": "SelectorLink",
+        "parentSelectors": [
+          "_root"
+        ],
+        "selector": "a.btn-sm",
+        "multiple": true,
+        "delay": 0
+      },
+      {
+        "id": "person-name",
+        "type": "SelectorText",
+        "parentSelectors": [
+          "details-selector"
+        ],
+        "selector": "#overview h3",
+        "multiple": false,
+        "regex": "(?:Overview of).*",
+        "delay": 0
+      },
+      {
+        "id": "location-selector",
+        "type": "SelectorText",
+        "parentSelectors": [
+          "details-selector"
+        ],
+        "selector": "a.top-address-link",
+        "multiple": false,
+        "regex": "",
+        "delay": 0
+      },
+      {
+        "id": "party-selector",
+        "type": "SelectorText",
+        "parentSelectors": [
+          "details-selector"
+        ],
+        "selector": "div.col-xs-12.col-md-6:nth-of-type(1)",
+        "multiple": false,
+        "regex": "(?:Party Affiliation:).*",
+        "delay": 0
+      },
+      {
+        "id": "gender-selector",
+        "type": "SelectorText",
+        "parentSelectors": [
+          "details-selector"
+        ],
+        "selector": "div#overview",
+        "multiple": false,
+        "regex": "(?:Gender:).*",
+        "delay": 0
+      },
+      {
+        "id": "registration-date",
+        "type": "SelectorText",
+        "parentSelectors": [
+          "details-selector"
+        ],
+        "selector": "div.col-xs-12.col-md-6:nth-of-type(1)",
+        "multiple": false,
+        "regex": "(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\\d\\d",
+        "delay": 0
+      },
+      {
+        "id": "phone-number",
+        "type": "SelectorText",
+        "parentSelectors": [
+          "details-selector"
+        ],
+        "selector": "#overview div:nth-of-type(1)",
+        "multiple": false,
+        "regex": "(\\+\\d{1})?[\\s.-]?\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s-.]?\\d{4}",
+        "delay": 0
+      },
+      {
+        "id": "email",
+        "type": "SelectorText",
+        "parentSelectors": [
+          "details-selector"
+        ],
+        "selector": "span[itemprop='email']",
+        "multiple": false,
+        "regex": "",
+        "delay": 0
+      },
+      {
+        "id": "voter-status",
+        "type": "SelectorText",
+        "parentSelectors": [
+          "details-selector"
+        ],
+        "selector": "div.col-xs-12.col-md-6:nth-of-type(1)",
+        "multiple": false,
+        "regex": "(?:Voter Status:).*",
+        "delay": 0
+      },
+      {
+        "id": "alt-location",
+        "type": "SelectorText",
+        "parentSelectors": [
+          "details-selector"
+        ],
+        "selector": "#overview div:nth-of-type(1)",
+        "multiple": false,
+        "regex": "(?:Lives in:).*",
+        "delay": 0
+      }
+    ]
+  }
