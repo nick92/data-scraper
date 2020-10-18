@@ -208,6 +208,6 @@ func main() {
 	}
 
 	fmt.Println(string(file))
-	_ = ioutil.WriteFile("output.json", file, 0644)
+	_ = ioutil.WriteFile(outputJSON, file, 0644)
 
 }
