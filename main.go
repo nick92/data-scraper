@@ -16,7 +16,7 @@ import (
 
 const (
 	settingsConfig = "settings.json"
-	scrapingJSON   = "stackover-flow.json"
+	scrapingJSON   = "scraping.json"
 	outputJSON     = "output.json"
 )
 
