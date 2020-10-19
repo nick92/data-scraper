@@ -16,7 +16,7 @@ import (
 
 const (
 	settingsConfig = "settings.json"
-	scrapingJSON   = "stackover-flow.json"
+	scrapingJSON   = "scraping1.json"
 	outputJSON     = "output.json"
 )
 
@@ -94,7 +94,7 @@ func SelectorText(doc *goquery.Document, selector *Selectors) []string {
 	// fmt.Println(selector.Selector)
 	var text []string
 	var matchText string
-	doc.Find(selector.Selector).Each(func(i int, s *goquery.Selection) {
+	doc.Find(selector.Selector).EachWithBreak(func(i int, s *goquery.Selection) bool {
 
 		if selector.Regex != "" {
 			re := regexp.MustCompile(selector.Regex)
@@ -103,6 +103,10 @@ func SelectorText(doc *goquery.Document, selector *Selectors) []string {
 			matchText = s.Text()
 		}
 		text = append(text, matchText)
+		if selector.Multiple == false {
+			return false
+		}
+		return true
 	})
 	return text
 }
@@ -111,19 +115,37 @@ func SelectorLink(doc *goquery.Document, selector *Selectors, baseURL string) []
 	// Find the review items
 	// fmt.Println(selector.Selector)
 	var links []string
-	doc.Find(selector.Selector).Each(func(i int, s *goquery.Selection) {
+	doc.Find(selector.Selector).EachWithBreak(func(i int, s *goquery.Selection) bool {
 		href, ok := s.Attr("href")
 		if !ok {
 			fmt.Printf("href not found")
 		}
 
 		links = append(links, toFixedURL(href, baseURL))
-		// if selector.Multiple == false {
-		// 	return false
-		// }
-		// return true
+		if selector.Multiple == false {
+			return false
+		}
+		return true
 	})
 	return links
+}
+
+func SelectorImage(doc *goquery.Document, selector *Selectors) []string {
+	// Find the review items
+	// fmt.Println(selector.Selector)
+	var srcs []string
+	doc.Find(selector.Selector).EachWithBreak(func(i int, s *goquery.Selection) bool {
+		src, ok := s.Attr("src")
+		if !ok {
+			fmt.Printf("href not found")
+		}
+		srcs = append(srcs, src)
+		if selector.Multiple == false {
+			return false
+		}
+		return true
+	})
+	return srcs
 }
 
 func crawlURL(href string) *goquery.Document {
@@ -188,6 +210,9 @@ func scraper(siteMap *Scraping, parent string) interface{} {
 					newSiteMap := getSiteMap(links, &selector)
 					result := scraper(newSiteMap, selector.ID)
 					linkOutput[selector.ID] = result
+				} else if selector.Type == "SelectorImage" {
+					resultText := SelectorImage(doc, &selector)
+					linkOutput[selector.ID] = resultText
 				}
 			}
 		}
@@ -197,7 +222,6 @@ func scraper(siteMap *Scraping, parent string) interface{} {
 }
 
 func main() {
-	// readScrapingJSON()
 	siteMap := readSiteMap()
 	finalOutput := scraper(siteMap, "_root")
 
