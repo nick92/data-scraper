@@ -53,6 +53,9 @@ How do i configure the scraper?
 How do i change what it scrapes?
 - You can change what the scraper scrapes using `scraping.json`
 
+Why not use a browser extension to scrape a website?
+- The problem with browser extensions is that they are slow, and when it comes to large scraping projects it turns into a nightmare.
+
 ---
 ### Author
 
