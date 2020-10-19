@@ -8,7 +8,6 @@ import (
 	"log"
 	"net/http"
 	"net/url"
-	"os"
 	"regexp"
 
 	"github.com/PuerkitoBio/goquery"
@@ -16,7 +15,7 @@ import (
 
 const (
 	settingsConfig = "settings.json"
-	scrapingJSON   = "scraping1.json"
+	scrapingJSON   = "scraping.json"
 	outputJSON     = "output.json"
 )
 
@@ -149,18 +148,16 @@ func SelectorImage(doc *goquery.Document, selector *Selectors) []string {
 }
 
 func crawlURL(href string) *goquery.Document {
-	fmt.Printf("Crawling Url -> %v \n", href)
 	response, err := netClient.Get(href)
 	if err != nil {
 		log.Println(err)
-		os.Exit(1)
 	}
 	defer response.Body.Close()
 
 	// Load the HTML document
 	doc, err := goquery.NewDocumentFromReader(response.Body)
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 	}
 
 	return doc
@@ -231,7 +228,6 @@ func main() {
 		return
 	}
 
-	fmt.Println(string(file))
-	_ = ioutil.WriteFile("output.json", file, 0644)
+	_ = ioutil.WriteFile(outputJSON, file, 0644)
 
 }
