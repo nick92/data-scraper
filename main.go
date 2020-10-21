@@ -32,13 +32,14 @@ var (
 )
 
 type Selectors struct {
-	ID              string
-	Type            string
-	ParentSelectors []string
-	Selector        string
-	Multiple        bool
-	Regex           string
-	Delay           int
+	ID               string
+	Type             string
+	ParentSelectors  []string
+	Selector         string
+	Multiple         bool
+	Regex            string
+	Delay            int
+	ExtractAttribute string
 }
 
 type Scraping struct {
@@ -129,6 +130,63 @@ func SelectorLink(doc *goquery.Document, selector *Selectors, baseURL string) []
 	return links
 }
 
+func SelectorElementAttribute(doc *goquery.Document, selector *Selectors) []string {
+	// Find the review items
+	// fmt.Println(selector.Selector)
+	var links []string
+	doc.Find(selector.Selector).EachWithBreak(func(i int, s *goquery.Selection) bool {
+		href, ok := s.Attr(selector.ExtractAttribute)
+		if !ok {
+			fmt.Printf("href not found")
+		}
+
+		links = append(links, href)
+		if selector.Multiple == false {
+			return false
+		}
+		return true
+	})
+	return links
+}
+
+func SelectorElement(doc *goquery.Document, selector *Selectors, startURL string) []interface{} {
+
+	// var element []string
+	baseSiteMap := readSiteMap()
+	var elementoutputList []interface{}
+	doc.Find(selector.Selector).EachWithBreak(func(i int, s *goquery.Selection) bool {
+		elementoutput := make(map[string]interface{})
+		for _, elementSelector := range baseSiteMap.Selectors {
+			if selector.ID == elementSelector.ParentSelectors[0] {
+				if elementSelector.Type == "SelectorText" {
+					// resultText := SelectorText(s, elementSelector)
+					resultText := s.Find(elementSelector.Selector).Text()
+					elementoutput[elementSelector.ID] = resultText
+				} else if elementSelector.Type == "SelectorImage" {
+					resultText, ok := s.Find(elementSelector.Selector).Attr("src")
+					if !ok {
+						fmt.Printf("href not found")
+					}
+					elementoutput[elementSelector.ID] = resultText
+				} else if elementSelector.Type == "SelectorLink" {
+					resultText, ok := s.Find(elementSelector.Selector).Attr("href")
+					if !ok {
+						fmt.Printf("href not found")
+					}
+					elementoutput[elementSelector.ID] = resultText
+				}
+			}
+		}
+		elementoutputList = append(elementoutputList, elementoutput)
+		if selector.Multiple == false {
+			return false
+		}
+		return true
+
+	})
+	return elementoutputList
+}
+
 func SelectorImage(doc *goquery.Document, selector *Selectors) []string {
 	// Find the review items
 	// fmt.Println(selector.Selector)
@@ -203,12 +261,19 @@ func scraper(siteMap *Scraping, parent string) interface{} {
 				} else if selector.Type == "SelectorLink" {
 					links := SelectorLink(doc, &selector, startURL)
 					fmt.Println(links)
-
 					newSiteMap := getSiteMap(links, &selector)
 					result := scraper(newSiteMap, selector.ID)
 					linkOutput[selector.ID] = result
+				} else if selector.Type == "SelectorElementAttribute" {
+					resultText := SelectorElementAttribute(doc, &selector)
+					linkOutput[selector.ID] = resultText
 				} else if selector.Type == "SelectorImage" {
 					resultText := SelectorImage(doc, &selector)
+					linkOutput[selector.ID] = resultText
+				} else if selector.Type == "SelectorElement" {
+					resultText := SelectorElement(doc, &selector, startURL)
+					// fmt.Println(links)
+
 					linkOutput[selector.ID] = resultText
 				}
 			}
