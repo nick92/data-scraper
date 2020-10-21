@@ -21,7 +21,7 @@ const (
 
 var (
 	config = &tls.Config{
-		InsecureSkipVerify: true,
+		InsecureSkipVerify: false,
 	}
 	transport = &http.Transport{
 		TLSClientConfig: config,
