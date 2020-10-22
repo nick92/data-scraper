@@ -313,7 +313,7 @@ func scraper(siteMap *Scraping, parent string) interface{} {
 	for i := 0; i < urlLength; i++ {
 		startURL := siteMap.StartUrl[i]
 		linkOutput := make(map[string]interface{})
-		fmt.Printf("startURL: %s\n", startURL)
+		fmt.Println("Start URL:", startURL)
 		for _, selector := range siteMap.Selectors {
 			if parent == selector.ParentSelectors[0] {
 				doc := crawlURL(startURL)
