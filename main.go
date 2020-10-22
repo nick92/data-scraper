@@ -9,7 +9,8 @@ import (
 	"net/http"
 	"net/url"
 	"reflect"
-
+	
+	// Change from goquery to the standard package of golang.
 	"github.com/PuerkitoBio/goquery"
 	// "golang.org/x/net/proxy"
 )
