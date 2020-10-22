@@ -8,7 +8,7 @@ import (
 	"log"
 	"net/http"
 	"net/url"
-	"regexp"
+	"reflect"
 
 	"github.com/PuerkitoBio/goquery"
 )
@@ -97,8 +97,9 @@ func SelectorText(doc *goquery.Document, selector *Selectors) []string {
 	doc.Find(selector.Selector).EachWithBreak(func(i int, s *goquery.Selection) bool {
 
 		if selector.Regex != "" {
-			re := regexp.MustCompile(selector.Regex)
-			matchText = re.FindString(s.Text())
+			// re := regexp.MustCompile(selector.Regex)
+			// matchText = re.FindString(s.Text())
+			matchText = s.Text()
 		} else {
 			matchText = s.Text()
 		}
@@ -177,7 +178,9 @@ func SelectorElement(doc *goquery.Document, selector *Selectors, startURL string
 				}
 			}
 		}
-		elementoutputList = append(elementoutputList, elementoutput)
+		if len(elementoutput) != 0 {
+			elementoutputList = append(elementoutputList, elementoutput)
+		}
 		if selector.Multiple == false {
 			return false
 		}
@@ -203,6 +206,30 @@ func SelectorImage(doc *goquery.Document, selector *Selectors) []string {
 		return true
 	})
 	return srcs
+}
+
+func SelectorTable(doc *goquery.Document, selector *Selectors) map[string]interface{} {
+	var headings, row []string
+	var rows [][]string
+	table := make(map[string]interface{})
+	doc.Find(selector.Selector).Each(func(index int, tablehtml *goquery.Selection) {
+		tablehtml.Find("tr").Each(func(indextr int, rowhtml *goquery.Selection) {
+			rowhtml.Find("th").Each(func(indexth int, tableheading *goquery.Selection) {
+				headings = append(headings, tableheading.Text())
+			})
+			rowhtml.Find("td").Each(func(indexth int, tablecell *goquery.Selection) {
+				row = append(row, tablecell.Text())
+			})
+			if len(row) != 0 {
+				rows = append(rows, row)
+				row = nil
+			}
+		})
+	})
+	table["header"] = headings
+	table["rows"] = rows
+
+	return table
 }
 
 func crawlURL(href string) *goquery.Document {
@@ -247,23 +274,79 @@ func getSiteMap(startURL []string, selector *Selectors) *Scraping {
 	return newSiteMap
 }
 
+func getChildSelector(selector *Selectors) bool {
+	baseSiteMap := readSiteMap()
+	var count int = 0
+	for _, childSelector := range baseSiteMap.Selectors {
+		if selector.ID == childSelector.ParentSelectors[0] {
+			count++
+		}
+	}
+	if count == 0 {
+		return true
+	}
+	return false
+}
+
+func HasElem(s interface{}, elem interface{}) bool {
+	arrV := reflect.ValueOf(s)
+	if arrV.Kind() == reflect.Slice {
+		for i := 0; i < arrV.Len(); i++ {
+
+			// XXX - panics if slice element points to an unexported struct field
+			// see https://golang.org/pkg/reflect/#Value.Interface
+			if arrV.Index(i).Interface() == elem {
+				return true
+			}
+		}
+	}
+
+	return false
+}
+
 func scraper(siteMap *Scraping, parent string) interface{} {
 
 	output := make(map[string]interface{})
-	for _, startURL := range siteMap.StartUrl {
+	urlLength := len(siteMap.StartUrl)
+	// for _, startURL := range siteMap.StartUrl {
+	for i := 0; i < urlLength; i++ {
+		startURL := siteMap.StartUrl[i]
 		linkOutput := make(map[string]interface{})
+		fmt.Printf("startURL: %s\n", startURL)
 		for _, selector := range siteMap.Selectors {
 			if parent == selector.ParentSelectors[0] {
 				doc := crawlURL(startURL)
 				if selector.Type == "SelectorText" {
 					resultText := SelectorText(doc, &selector)
-					linkOutput[selector.ID] = resultText
+					if len(resultText) != 0 {
+						if len(resultText) == 1 {
+							linkOutput[selector.ID] = resultText[0]
+						} else {
+							linkOutput[selector.ID] = resultText
+						}
+					}
 				} else if selector.Type == "SelectorLink" {
 					links := SelectorLink(doc, &selector, startURL)
-					fmt.Println(links)
-					newSiteMap := getSiteMap(links, &selector)
-					result := scraper(newSiteMap, selector.ID)
-					linkOutput[selector.ID] = result
+					// fmt.Println(links)
+					if HasElem(selector.ParentSelectors, selector.ID) {
+						for _, link := range links {
+							if !HasElem(siteMap.StartUrl, link) {
+								siteMap.StartUrl = append(siteMap.StartUrl, link)
+							}
+						}
+						// fmt.Printf("appended urls : %v\n", siteMap.StartUrl)
+						urlLength = len(siteMap.StartUrl)
+					} else {
+						childSelector := getChildSelector(&selector)
+						if childSelector == true {
+							linkOutput[selector.ID] = links
+						} else {
+							newSiteMap := getSiteMap(links, &selector)
+							result := scraper(newSiteMap, selector.ID)
+							fmt.Printf("result = %v", result)
+							linkOutput[selector.ID] = result
+						}
+					}
 				} else if selector.Type == "SelectorElementAttribute" {
 					resultText := SelectorElementAttribute(doc, &selector)
 					linkOutput[selector.ID] = resultText
@@ -272,13 +355,17 @@ func scraper(siteMap *Scraping, parent string) interface{} {
 					linkOutput[selector.ID] = resultText
 				} else if selector.Type == "SelectorElement" {
 					resultText := SelectorElement(doc, &selector, startURL)
-					// fmt.Println(links)
-
+					linkOutput[selector.ID] = resultText
+				} else if selector.Type == "SelectorTable" {
+					resultText := SelectorTable(doc, &selector)
 					linkOutput[selector.ID] = resultText
 				}
 			}
 		}
-		output[startURL] = linkOutput
+		if len(linkOutput) != 0 {
+			output[startURL] = linkOutput
+		}
+
 	}
 	return output
 }
