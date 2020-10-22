@@ -29,11 +29,11 @@ You can finally run the scraper.
 ### Features
 - Unlimited scraping ***NO LIMITS***
 - Distributed scraping
-- Concurrency scraping
+- Concurrency scraping ***(Coming Soon)***
 - JavaScript rendering ***(Coming Soon)***
-- Dynamic applications
+- Dynamic applications ***(Coming Soon)***
 - Proxy support ***(Coming Soon)***
-- Exports to JSON ***Support for CSV|XML (Coming Soon)***
+- Exports to JSON|CSV|XML ***(Coming Soon)***
 
 ---
 ### Q&A
