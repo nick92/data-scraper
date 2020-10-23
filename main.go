@@ -21,14 +21,16 @@ import (
 	// "golang.org/x/net/proxy"
 )
 
+var (
+	config *Config
+	proxyIndex = 0
+)
+
 const (
 	settingsConfig = "settings.json"
 	scrapingJSON   = "scraping.json"
 	outputJSON     = "output.json"
 )
-
-var config *Config
-var proxyIndex int = 0
 
 // Selectors is struct to Marshal selector
 type Selectors struct {
