@@ -3,6 +3,9 @@ package main
 import (
 	"crypto/tls"
 	"encoding/json"
+
+	// "encoding/csv"
+	// "encoding/xml"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -23,7 +26,7 @@ const (
 
 var (
 	config = &tls.Config{
-		InsecureSkipVerify: true,
+		InsecureSkipVerify: false,
 	}
 	transport = &http.Transport{
 		TLSClientConfig: config,
@@ -127,7 +130,7 @@ func SelectorLink(doc *goquery.Document, selector *Selectors, baseURL string) []
 	doc.Find(selector.Selector).EachWithBreak(func(i int, s *goquery.Selection) bool {
 		href, ok := s.Attr("href")
 		if !ok {
-			fmt.Printf("href not found")
+			fmt.Printf("HREF has not been found")
 		}
 
 		links = append(links, toFixedURL(href, baseURL))
@@ -147,7 +150,7 @@ func SelectorElementAttribute(doc *goquery.Document, selector *Selectors) []stri
 	doc.Find(selector.Selector).EachWithBreak(func(i int, s *goquery.Selection) bool {
 		href, ok := s.Attr(selector.ExtractAttribute)
 		if !ok {
-			fmt.Printf("href not found")
+			fmt.Printf("HREF has not been found")
 		}
 
 		links = append(links, href)
@@ -174,13 +177,13 @@ func SelectorElement(doc *goquery.Document, selector *Selectors, startURL string
 				} else if elementSelector.Type == "SelectorImage" {
 					resultText, ok := s.Find(elementSelector.Selector).Attr("src")
 					if !ok {
-						fmt.Printf("href not found")
+						fmt.Printf("HREF has not been found")
 					}
 					elementoutput[elementSelector.ID] = resultText
 				} else if elementSelector.Type == "SelectorLink" {
 					resultText, ok := s.Find(elementSelector.Selector).Attr("href")
 					if !ok {
-						fmt.Printf("href not found")
+						fmt.Printf("HREF has not been found")
 					}
 					elementoutput[elementSelector.ID] = resultText
 				}
@@ -206,7 +209,7 @@ func SelectorImage(doc *goquery.Document, selector *Selectors) []string {
 	doc.Find(selector.Selector).EachWithBreak(func(i int, s *goquery.Selection) bool {
 		src, ok := s.Attr("src")
 		if !ok {
-			fmt.Printf("href not found")
+			fmt.Printf("HREF has not been found")
 		}
 		srcs = append(srcs, src)
 		if selector.Multiple == false {
@@ -323,7 +326,7 @@ func scraper(siteMap *Scraping, parent string) interface{} {
 	for i := 0; i < urlLength; i++ {
 		startURL := siteMap.StartURL[i]
 		linkOutput := make(map[string]interface{})
-		fmt.Printf("startURL: %s\n", startURL)
+		fmt.Println("Start URL:", startURL)
 		for _, selector := range siteMap.Selectors {
 			if parent == selector.ParentSelectors[0] {
 				doc := crawlURL(startURL)
