@@ -4,7 +4,7 @@ import (
 	"context"
 	"crypto/tls"
 	"encoding/json"
-
+	"strings"
 	// "encoding/csv"
 	// "encoding/xml"
 	"fmt"
@@ -14,12 +14,8 @@ import (
 	"net/url"
 	"reflect"
 
-	// Change from goquery to the standard package of golang.
-	"strings"
-
-	"github.com/chromedp/chromedp"
-
 	// change from 3rd party packages to golang packages
+	"github.com/chromedp/chromedp"
 	"github.com/PuerkitoBio/goquery"
 	"github.com/dlclark/regexp2"
 	// "golang.org/x/net/proxy"
