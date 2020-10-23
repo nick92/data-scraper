@@ -31,20 +31,7 @@ const (
 	outputJSON     = "output.json"
 )
 
-// var (
-// 	config = &tls.Config{
-// 		InsecureSkipVerify: false,
-// 	}
-// 	transport = &http.Transport{
-// 		TLSClientConfig: config,
-// 	}
-// 	netClient = &http.Client{
-// 		Transport: transport,
-// 	}
-// )
-
 var config *Config
-
 var proxyIndex int = 0
 
 // Selectors is struct to Marshal selector
