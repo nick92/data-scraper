@@ -31,7 +31,7 @@ You can finally run the scraper.
 - Distributed scraping
 - Concurrency scraping ***(Coming Soon)***
 - JavaScript rendering
-- Dynamic applications ***(Coming Soon)***
+- Dynamic applications
 - Proxy support ***(Coming Soon)***
 - Exports to JSON|CSV|XML ***(Coming Soon)***
 
