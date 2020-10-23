@@ -42,16 +42,16 @@ How do i use this?
 - Download the [webscraper](https://webscraper.io/) extension, develop the scraper using the extension, export the scraper json rules after creating the scraper.
 
 How fast is this?
-- On our test, its about >3k request a min.
+- On our test, its about =>3k request a minute.
 
-How many website can it scrape?
-- This will scrape as many domains as you like.
-
-How do i configure the scraper?
-- Open the settings file `config.json` and change the scraper settings there.
+How many domains can it scrape?
+- This will scrape as many domains as you like. ***NO LIMITS***
 
 How do i change what it scrapes?
 - You can change what the scraper scrapes using `scraping.json`
+
+How do i configure the scraper?
+- Open the settings file `config.json` and change the scraper settings there.
 
 Why not use a browser extension to scrape a website?
 - The problem with browser extensions is that they are slow, and when it comes to large scraping projects it turns into a nightmare.
