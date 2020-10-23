@@ -68,13 +68,7 @@ func readSettingsJSON() {
 	if err != nil {
 		log.Println(err)
 	}
-	// just priting it
-	fmt.Println("JavaScript: ", settings.JavaScript)
-	fmt.Println("Proxy: ", settings.Proxy)
-	fmt.Println("ProxyLists: ", settings.ProxyLists)
-	fmt.Println("RotatingProxy: ", settings.RotatingProxy)
-	fmt.Println("Export: ", settings.Export)
-
+	// 
 	config = &settings
 }
 
