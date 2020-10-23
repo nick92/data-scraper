@@ -9,8 +9,10 @@ import (
 	"net/http"
 	"net/url"
 	"reflect"
+	"strings"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/dlclark/regexp2"
 )
 
 const (
@@ -31,6 +33,7 @@ var (
 	}
 )
 
+// Selectors is struct to Marshal selector
 type Selectors struct {
 	ID               string
 	Type             string
@@ -42,8 +45,9 @@ type Selectors struct {
 	ExtractAttribute string
 }
 
+// Scraping is struct to Marshal scraping file
 type Scraping struct {
-	StartUrl  []string
+	StartURL  []string
 	ID        string `json:"_id,omitempty"`
 	Selectors []Selectors
 }
@@ -89,21 +93,24 @@ func readSiteMap() *Scraping {
 	return &scrape
 }
 
+// SelectorText get data text for html tag
 func SelectorText(doc *goquery.Document, selector *Selectors) []string {
 	// Find the review items
 	// fmt.Println(selector.Selector)
 	var text []string
-	var matchText string
+	var matchText *regexp2.Match
 	doc.Find(selector.Selector).EachWithBreak(func(i int, s *goquery.Selection) bool {
 
 		if selector.Regex != "" {
-			// re := regexp.MustCompile(selector.Regex)
-			// matchText = re.FindString(s.Text())
-			matchText = s.Text()
+			re := regexp2.MustCompile(selector.Regex, 0)
+			if matchText, _ = re.FindStringMatch(s.Text()); matchText != nil {
+				text = append(text, strings.TrimSpace(matchText.String()))
+			} else {
+				text = append(text, strings.TrimSpace(s.Text()))
+			}
 		} else {
-			matchText = s.Text()
+			text = append(text, strings.TrimSpace(s.Text()))
 		}
-		text = append(text, matchText)
 		if selector.Multiple == false {
 			return false
 		}
@@ -112,6 +119,7 @@ func SelectorText(doc *goquery.Document, selector *Selectors) []string {
 	return text
 }
 
+// SelectorLink get data href for html tag
 func SelectorLink(doc *goquery.Document, selector *Selectors, baseURL string) []string {
 	// Find the review items
 	// fmt.Println(selector.Selector)
@@ -131,6 +139,7 @@ func SelectorLink(doc *goquery.Document, selector *Selectors, baseURL string) []
 	return links
 }
 
+// SelectorElementAttribute get define attribute for html tag
 func SelectorElementAttribute(doc *goquery.Document, selector *Selectors) []string {
 	// Find the review items
 	// fmt.Println(selector.Selector)
@@ -150,9 +159,8 @@ func SelectorElementAttribute(doc *goquery.Document, selector *Selectors) []stri
 	return links
 }
 
+// SelectorElement get child element of html selected element
 func SelectorElement(doc *goquery.Document, selector *Selectors, startURL string) []interface{} {
-
-	// var element []string
 	baseSiteMap := readSiteMap()
 	var elementoutputList []interface{}
 	doc.Find(selector.Selector).EachWithBreak(func(i int, s *goquery.Selection) bool {
@@ -190,6 +198,7 @@ func SelectorElement(doc *goquery.Document, selector *Selectors, startURL string
 	return elementoutputList
 }
 
+// SelectorImage get src of Image for html tag
 func SelectorImage(doc *goquery.Document, selector *Selectors) []string {
 	// Find the review items
 	// fmt.Println(selector.Selector)
@@ -208,6 +217,7 @@ func SelectorImage(doc *goquery.Document, selector *Selectors) []string {
 	return srcs
 }
 
+// SelectorTable get header and row data of table
 func SelectorTable(doc *goquery.Document, selector *Selectors) map[string]interface{} {
 	var headings, row []string
 	var rows [][]string
@@ -269,7 +279,7 @@ func getSiteMap(startURL []string, selector *Selectors) *Scraping {
 	baseSiteMap := readSiteMap()
 	newSiteMap := new(Scraping)
 	newSiteMap.ID = selector.ID
-	newSiteMap.StartUrl = startURL
+	newSiteMap.StartURL = startURL
 	newSiteMap.Selectors = baseSiteMap.Selectors
 	return newSiteMap
 }
@@ -288,6 +298,7 @@ func getChildSelector(selector *Selectors) bool {
 	return false
 }
 
+// HasElem check element is present or not in parsed list
 func HasElem(s interface{}, elem interface{}) bool {
 	arrV := reflect.ValueOf(s)
 	if arrV.Kind() == reflect.Slice {
@@ -307,10 +318,10 @@ func HasElem(s interface{}, elem interface{}) bool {
 func scraper(siteMap *Scraping, parent string) interface{} {
 
 	output := make(map[string]interface{})
-	urlLength := len(siteMap.StartUrl)
+	urlLength := len(siteMap.StartURL)
 	// for _, startURL := range siteMap.StartUrl {
 	for i := 0; i < urlLength; i++ {
-		startURL := siteMap.StartUrl[i]
+		startURL := siteMap.StartURL[i]
 		linkOutput := make(map[string]interface{})
 		fmt.Printf("startURL: %s\n", startURL)
 		for _, selector := range siteMap.Selectors {
@@ -330,12 +341,12 @@ func scraper(siteMap *Scraping, parent string) interface{} {
 					// fmt.Println(links)
 					if HasElem(selector.ParentSelectors, selector.ID) {
 						for _, link := range links {
-							if !HasElem(siteMap.StartUrl, link) {
-								siteMap.StartUrl = append(siteMap.StartUrl, link)
+							if !HasElem(siteMap.StartURL, link) {
+								siteMap.StartURL = append(siteMap.StartURL, link)
 							}
 						}
 						// fmt.Printf("appended urls : %v\n", siteMap.StartUrl)
-						urlLength = len(siteMap.StartUrl)
+						urlLength = len(siteMap.StartURL)
 					} else {
 						childSelector := getChildSelector(&selector)
 						if childSelector == true {
@@ -352,7 +363,13 @@ func scraper(siteMap *Scraping, parent string) interface{} {
 					linkOutput[selector.ID] = resultText
 				} else if selector.Type == "SelectorImage" {
 					resultText := SelectorImage(doc, &selector)
-					linkOutput[selector.ID] = resultText
+					if len(resultText) != 0 {
+						if len(resultText) == 1 {
+							linkOutput[selector.ID] = resultText[0]
+						} else {
+							linkOutput[selector.ID] = resultText
+						}
+					}
 				} else if selector.Type == "SelectorElement" {
 					resultText := SelectorElement(doc, &selector, startURL)
 					linkOutput[selector.ID] = resultText
