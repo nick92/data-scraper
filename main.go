@@ -3,7 +3,6 @@ package main
 import (
 	"crypto/tls"
 	"encoding/json"
-
 	// "encoding/csv"
 	// "encoding/xml"
 	"fmt"
@@ -14,8 +13,10 @@ import (
 	"reflect"
 	"strings"
 
+	// change from 3rd party packages to golang packages
 	"github.com/PuerkitoBio/goquery"
 	"github.com/dlclark/regexp2"
+	// "golang.org/x/net/proxy"
 )
 
 const (
