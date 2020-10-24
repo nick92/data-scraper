@@ -1,5 +1,5 @@
 {
-    "JavaScript": false,
+    "JavaScript": true,
     "Proxy": false,
     "ProxyLists": [
         "socks5://127.0.0.1:8080",
