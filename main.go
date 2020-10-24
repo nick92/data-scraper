@@ -61,6 +61,7 @@ type Config struct {
 	Export        string
 }
 
+// To function properly, a lot of memory is needed to clean up files.
 func clearCache() {
 	operatingSystem := runtime.GOOS
 	switch operatingSystem {
