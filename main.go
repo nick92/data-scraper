@@ -367,92 +367,33 @@ func HasElem(s interface{}, elem interface{}) bool {
 	return false
 }
 
-func JSScraper(siteMap *Scraping, parent string) interface{} {
-	output := make(map[string]interface{})
-	urlLength := len(siteMap.StartURL)
-	// for _, startURL := range siteMap.StartUrl {
-	for i := 0; i < urlLength; i++ {
-		startURL := siteMap.StartURL[i]
-		linkOutput := make(map[string]interface{})
-		fmt.Println("Start URL:", startURL)
-		for _, selector := range siteMap.Selectors {
-			if parent == selector.ParentSelectors[0] {
-				linkOutput[selector.ID] = emulateURL(startURL, selector.Type, selector.Selector)
-			}
-		}
-
-		if len(linkOutput) != 0 {
-			if parent == "_root" {
-				out, err := ioutil.ReadFile(outputFile)
-				if err != nil {
-					fmt.Printf("Error while reading %s file\n", outputFile)
-					os.Exit(1)
-				}
-
-				var data map[string]interface{}
-				err = json.Unmarshal(out, &data)
-				if err != nil {
-					fmt.Printf("Failed to unmarshal %s file\n", outputFile)
-					os.Exit(1)
-				}
-				data[startURL] = linkOutput
-				file, err := json.MarshalIndent(data, "", " ")
-				if err != nil {
-					fmt.Println(err.Error())
-					os.Exit(1)
-				}
-				// fmt.Println(file)
-				_ = ioutil.WriteFile(outputFile, file, 0644)
-			} else {
-				output[startURL] = linkOutput
-			}
-		}
-	}
-
-	return output
-}
-
-func emulateURL(url string, selType string, selector string) string {
+func emulateURL(url string) *goquery.Document {
 	// create context
 	ctx, cancel := chromedp.NewContext(context.Background())
 	defer cancel()
 	var err error
 
 	// run task list
-	var res string
-	var attr map[string]string
+	var body string
 
-	if selType == "SelectorText" {
-		err = chromedp.Run(ctx,
-			chromedp.Navigate(url),
-			chromedp.InnerHTML(selector, &res, chromedp.NodeVisible, chromedp.ByQuery),
-		)
+	err = chromedp.Run(ctx,
+		chromedp.Navigate(url),
+		chromedp.InnerHTML(`body`, &body, chromedp.NodeVisible, chromedp.ByQuery),
+	)
 
-		if err != nil {
-			log.Println(err)
-		}
-
-	} else if selType == "SelectorImage" || selType == "SelectorLink" || selType == "SelectorElementAttribute" {
-		err = chromedp.Run(ctx,
-			chromedp.Navigate(url),
-			// chromedp.Text(selector, &res, chromedp.NodeVisible, chromedp.BySearch),
-			chromedp.Attributes(selector, &attr, chromedp.NodeVisible, chromedp.ByQuery),
-		)
-
-		if err != nil {
-			log.Println(err)
-		}
-
-		if selType == "SelectorLink" {
-			res = attr["href"]
-		} else if selType == "SelectorElementAttribute" {
-			res = attr[selector]
-		} else {
-			res = attr["src"]
-		}
+	if err != nil {
+		log.Println(err)
 	}
 
-	return res
+	r := strings.NewReader(body)
+
+	// Load the HTML document
+	doc, err := goquery.NewDocumentFromReader(r)
+	if err != nil {
+		log.Println(err)
+	}
+
+	return doc
 }
 
 // generator using a channel and a goroutine
@@ -512,7 +453,14 @@ func scraper(siteMap *Scraping, parent string) map[string]interface{} {
 			fmt.Println("Start URL:", startURL)
 			for _, selector := range siteMap.Selectors {
 				if parent == selector.ParentSelectors[0] {
-					doc := crawlURL(startURL)
+					var doc *goquery.Document
+
+					if config.JavaScript {
+						doc = emulateURL(startURL)
+					} else {
+						doc = crawlURL(startURL)
+					}
+
 					if selector.Type == "SelectorText" {
 						resultText := SelectorText(doc, &selector)
 						// fmt.Printf("text resultText = %v", resultText)
@@ -604,9 +552,6 @@ func main() {
 	siteMap := readSiteMap()
 	readSettingsJSON()
 
-	if config.JavaScript {
-		_ = JSScraper(siteMap, "_root")
-	} else {
-		_ = scraper(siteMap, "_root")
-	}
+	_ = scraper(siteMap, "_root")
+
 }
