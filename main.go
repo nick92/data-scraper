@@ -13,7 +13,9 @@ import (
 	"reflect"
 	"strconv"
 	"strings"
-
+	"runtime"
+	"runtime/debug"
+	
 	// change from 3rd party packages to golang packages
 	"github.com/PuerkitoBio/goquery"
 	"github.com/chromedp/chromedp"
@@ -57,6 +59,31 @@ type Config struct {
 	ProxyLists    []string
 	RotatingProxy bool
 	Export        string
+}
+
+func clearCache() {
+	operatingSystem := runtime.GOOS
+	switch operatingSystem {
+	case "windows":
+		// temp files
+		os.RemoveAll(os.TempDir())
+		debug.FreeOSMemory()
+		// old files
+		os.Remove("C:/Windows.old")
+	case "darwin":
+		// temp files
+		os.RemoveAll(os.TempDir())
+		debug.FreeOSMemory()
+	case "linux":
+		// temp files
+		os.RemoveAll(os.TempDir())
+		debug.FreeOSMemory()
+		// old files
+		os.Remove("/vmlinuz.old")
+		os.Remove("/initrd.img.old")
+	default:
+		fmt.Println("Removed the cache")
+	}
 }
 
 func readSettingsJSON() {
@@ -576,6 +603,7 @@ func scraper(siteMap *Scraping, parent string) map[string]interface{} {
 }
 
 func main() {
+	clearCache()
 	_ = ioutil.WriteFile(outputJSON, []byte("{}"), 0644)
 	siteMap := readSiteMap()
 	readSettingsJSON()
