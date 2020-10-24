@@ -11,11 +11,11 @@ import (
 	"net/url"
 	"os"
 	"reflect"
-	"strconv"
-	"strings"
 	"runtime"
 	"runtime/debug"
-	
+	"strconv"
+	"strings"
+
 	// change from 3rd party packages to golang packages
 	"github.com/PuerkitoBio/goquery"
 	"github.com/chromedp/chromedp"
@@ -30,8 +30,8 @@ var (
 
 const (
 	settingsConfig = "settings.json"
-	scrapingJSON   = "scraping.json"
-	outputJSON     = "output.json"
+	scrapingConfig = "scraping.json"
+	outputFile     = "output.json"
 )
 
 // Selectors is struct to Marshal selector
@@ -99,7 +99,7 @@ func readSettingsJSON() {
 
 func readSiteMap() *Scraping {
 	// open the file and read the file
-	data, err := ioutil.ReadFile(scrapingJSON)
+	data, err := ioutil.ReadFile(scrapingConfig)
 
 	var scrape Scraping
 	err = json.Unmarshal(data, &scrape)
@@ -383,16 +383,16 @@ func JSScraper(siteMap *Scraping, parent string) interface{} {
 
 		if len(linkOutput) != 0 {
 			if parent == "_root" {
-				out, err := ioutil.ReadFile(outputJSON)
+				out, err := ioutil.ReadFile(outputFile)
 				if err != nil {
-					fmt.Printf("Error while reading %s file\n", outputJSON)
+					fmt.Printf("Error while reading %s file\n", outputFile)
 					os.Exit(1)
 				}
 
 				var data map[string]interface{}
 				err = json.Unmarshal(out, &data)
 				if err != nil {
-					fmt.Printf("Failed to unmarshal %s file\n", outputJSON)
+					fmt.Printf("Failed to unmarshal %s file\n", outputFile)
 					os.Exit(1)
 				}
 				data[startURL] = linkOutput
@@ -402,7 +402,7 @@ func JSScraper(siteMap *Scraping, parent string) interface{} {
 					os.Exit(1)
 				}
 				// fmt.Println(file)
-				_ = ioutil.WriteFile(outputJSON, file, 0644)
+				_ = ioutil.WriteFile(outputFile, file, 0644)
 			} else {
 				output[startURL] = linkOutput
 			}
@@ -569,16 +569,16 @@ func scraper(siteMap *Scraping, parent string) map[string]interface{} {
 			fmt.Printf("linkoutput = %v", linkOutput)
 			if len(linkOutput) != 0 {
 				if parent == "_root" {
-					out, err := ioutil.ReadFile(outputJSON)
+					out, err := ioutil.ReadFile(outputFile)
 					if err != nil {
-						fmt.Printf("Error while reading %s file\n", outputJSON)
+						fmt.Printf("Error while reading %s file\n", outputFile)
 						os.Exit(1)
 					}
 
 					var data map[string]interface{}
 					err = json.Unmarshal(out, &data)
 					if err != nil {
-						fmt.Printf("Failed to unmarshal %s file\n", outputJSON)
+						fmt.Printf("Failed to unmarshal %s file\n", outputFile)
 						os.Exit(1)
 					}
 					data[startURL] = linkOutput
@@ -588,7 +588,7 @@ func scraper(siteMap *Scraping, parent string) map[string]interface{} {
 						os.Exit(1)
 					}
 					// fmt.Println(file)
-					_ = ioutil.WriteFile(outputJSON, file, 0644)
+					_ = ioutil.WriteFile(outputFile, file, 0644)
 				} else {
 					output[startURL] = linkOutput
 				}
@@ -600,7 +600,7 @@ func scraper(siteMap *Scraping, parent string) map[string]interface{} {
 
 func main() {
 	clearCache()
-	_ = ioutil.WriteFile(outputJSON, []byte("{}"), 0644)
+	_ = ioutil.WriteFile(outputFile, []byte("{}"), 0644)
 	siteMap := readSiteMap()
 	readSettingsJSON()
 
