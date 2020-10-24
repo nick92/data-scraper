@@ -30,7 +30,7 @@ You can finally run the scraper.
 - Unlimited scraping ***NO LIMITS***
 - Distributed scraping
 - Concurrency scraping ***(Coming Soon)***
-- JavaScript rendering
+- JavaScript rendering ***Google Chrome (Required)***
 - Dynamic applications
 - Proxy support ***(Coming Soon)***
 - Exports to JSON|CSV|XML ***(Coming Soon)***
@@ -51,7 +51,7 @@ How do i change what it scrapes?
 - You can change what the scraper scrapes using `scraping.json`
 
 How do i configure the scraper?
-- Open the settings file `config.json` and change the scraper settings there.
+- Open the settings file `settings.json` and change the scraper settings there.
 
 Can this scrape apps written in JavaScript?
 - Yes, this can scrape apps written in JS.
