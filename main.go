@@ -11,6 +11,7 @@ import (
 	"net/url"
 	"os"
 	"reflect"
+	"strconv"
 	"strings"
 
 	// change from 3rd party packages to golang packages
@@ -408,94 +409,144 @@ func emulateURL(url string, selType string, selector string) string {
 	return res
 }
 
-func scraper(siteMap *Scraping, parent string) interface{} {
+// generator using a channel and a goroutine
+func getURL(urls []string) <-chan string {
 
-	output := make(map[string]interface{})
-	urlLength := len(siteMap.StartURL)
-	// for _, startURL := range siteMap.StartUrl {
-	for i := 0; i < urlLength; i++ {
-		startURL := siteMap.StartURL[i]
-		linkOutput := make(map[string]interface{})
-		fmt.Println("Start URL:", startURL)
-		for _, selector := range siteMap.Selectors {
-			if parent == selector.ParentSelectors[0] {
-				doc := crawlURL(startURL)
-				if selector.Type == "SelectorText" {
-					resultText := SelectorText(doc, &selector)
-					if len(resultText) != 0 {
-						if len(resultText) == 1 {
-							linkOutput[selector.ID] = resultText[0]
-						} else {
-							linkOutput[selector.ID] = resultText
-						}
-					}
-				} else if selector.Type == "SelectorLink" {
-					links := SelectorLink(doc, &selector, startURL)
-					// fmt.Println(links)
-					if HasElem(selector.ParentSelectors, selector.ID) {
-						for _, link := range links {
-							if !HasElem(siteMap.StartURL, link) {
-								siteMap.StartURL = append(siteMap.StartURL, link)
-							}
-						}
-						// fmt.Printf("appended urls : %v\n", siteMap.StartUrl)
-						urlLength = len(siteMap.StartURL)
-					} else {
-						childSelector := getChildSelector(&selector)
-						if childSelector == true {
-							linkOutput[selector.ID] = links
-						} else {
-							newSiteMap := getSiteMap(links, &selector)
-							result := scraper(newSiteMap, selector.ID)
-							fmt.Printf("result = %v", result)
-							linkOutput[selector.ID] = result
-						}
-					}
-				} else if selector.Type == "SelectorElementAttribute" {
-					resultText := SelectorElementAttribute(doc, &selector)
-					linkOutput[selector.ID] = resultText
-				} else if selector.Type == "SelectorImage" {
-					resultText := SelectorImage(doc, &selector)
-					if len(resultText) != 0 {
-						if len(resultText) == 1 {
-							linkOutput[selector.ID] = resultText[0]
-						} else {
-							linkOutput[selector.ID] = resultText
-						}
-					}
-				} else if selector.Type == "SelectorElement" {
-					resultText := SelectorElement(doc, &selector, startURL)
-					linkOutput[selector.ID] = resultText
-				} else if selector.Type == "SelectorTable" {
-					resultText := SelectorTable(doc, &selector)
-					linkOutput[selector.ID] = resultText
+	// create a channel
+	c := make(chan string)
+	go func() {
+		re := regexp2.MustCompile(`(\[\d{1,10}-\d{1,10}\]$)`, 0)
+		for _, urlLink := range urls {
+			urlRange, _ := re.FindStringMatch(urlLink)
+			// fmt.Printf("urlrange = %s ", urlRange)
+			if urlRange != nil {
+				val2 := strings.Replace(urlLink, fmt.Sprintf("%s", urlRange), "", -2)
+				// val2 := fmt.Sprintf("%s", val)
+				// fmt.Println(val2)
+				urlRange2 := fmt.Sprintf("%s", urlRange)
+				for _, charc := range []string{"[", "]"} {
+					urlRange2 = strings.Replace(urlRange2, charc, "", -2)
 				}
+				rang := strings.Split(urlRange2, "-")
+				fmt.Println(rang)
+				// using ParseInt method
+				int1, _ := strconv.ParseInt(rang[0], 10, 64)
+				int2, _ := strconv.ParseInt(rang[1], 10, 64)
+				// create an anonymous inner function
+				// keyword "go" starts a goroutine
+
+				for x := int1; x <= int2; x++ {
+					c <- fmt.Sprintf("%s%d", val2, x)
+				}
+				// close(c) sets the status of the channel c to false
+				// and is needed by the for/range loop to end
+				// close(c)
+
+			} else {
+				c <- urlLink
 			}
 		}
-		if len(linkOutput) != 0 {
-			if parent == "_root" {
-				out, err := ioutil.ReadFile(outputJSON)
-				if err != nil {
-					fmt.Printf("Error while reading %s file\n", outputJSON)
-					os.Exit(1)
-				}
+		// close(c) sets the status of the channel c to false
+		// and is needed by the for/range loop to end
+		close(c)
+	}()
+	return c
+}
 
-				var data map[string]interface{}
-				err = json.Unmarshal(out, &data)
-				if err != nil {
-					fmt.Printf("Failed to unmarshal %s file\n", outputJSON)
-					os.Exit(1)
+func scraper(siteMap *Scraping, parent string) map[string]interface{} {
+
+	output := make(map[string]interface{})
+	// urlLength := len(siteMap.StartURL)
+	fc := getURL(siteMap.StartURL)
+	// for i := 0; i < urlLength; i++ {
+	if fc != nil {
+		for startURL := range fc {
+			// startURL := siteMap.StartURL[i]
+			linkOutput := make(map[string]interface{})
+			fmt.Println("Start URL:", startURL)
+			for _, selector := range siteMap.Selectors {
+				if parent == selector.ParentSelectors[0] {
+					doc := crawlURL(startURL)
+					if selector.Type == "SelectorText" {
+						resultText := SelectorText(doc, &selector)
+						if len(resultText) != 0 {
+							if len(resultText) == 1 {
+								linkOutput[selector.ID] = resultText[0]
+							} else {
+								linkOutput[selector.ID] = resultText
+							}
+						}
+					} else if selector.Type == "SelectorLink" {
+						links := SelectorLink(doc, &selector, startURL)
+						// fmt.Printf("Links = %v", links)
+						if HasElem(selector.ParentSelectors, selector.ID) {
+							for _, link := range links {
+								if !HasElem(siteMap.StartURL, link) {
+									siteMap.StartURL = append(siteMap.StartURL, link)
+								}
+							}
+							// fmt.Printf("appended urls : %v\n", siteMap.StartUrl)
+							// urlLength = len(siteMap.StartURL)
+						} else {
+							childSelector := getChildSelector(&selector)
+							// fmt.Println(childSelector)
+							if childSelector == true {
+								linkOutput[selector.ID] = links
+							} else {
+								newSiteMap := getSiteMap(links, &selector)
+								// fmt.Printf("newSiteMap = %+v", newSiteMap)
+								result := scraper(newSiteMap, selector.ID)
+								fmt.Printf("result = %+v", result)
+								linkOutput[selector.ID] = result
+							}
+						}
+					} else if selector.Type == "SelectorElementAttribute" {
+						resultText := SelectorElementAttribute(doc, &selector)
+						linkOutput[selector.ID] = resultText
+					} else if selector.Type == "SelectorImage" {
+						resultText := SelectorImage(doc, &selector)
+						if len(resultText) != 0 {
+							if len(resultText) == 1 {
+								linkOutput[selector.ID] = resultText[0]
+							} else {
+								linkOutput[selector.ID] = resultText
+							}
+						}
+					} else if selector.Type == "SelectorElement" {
+						resultText := SelectorElement(doc, &selector, startURL)
+						linkOutput[selector.ID] = resultText
+					} else if selector.Type == "SelectorTable" {
+						resultText := SelectorTable(doc, &selector)
+						linkOutput[selector.ID] = resultText
+					}
 				}
-				data[startURL] = linkOutput
-				file, err := json.MarshalIndent(data, "", " ")
-				if err != nil {
-					fmt.Println(err.Error())
-					os.Exit(1)
+			}
+			// fmt.Printf("linkoutput = %v", linkOutput)
+			if len(linkOutput) != 0 {
+				if parent == "_root" {
+					out, err := ioutil.ReadFile(outputJSON)
+					if err != nil {
+						fmt.Printf("Error while reading %s file\n", outputJSON)
+						os.Exit(1)
+					}
+
+					var data map[string]interface{}
+					err = json.Unmarshal(out, &data)
+					if err != nil {
+						fmt.Printf("Failed to unmarshal %s file\n", outputJSON)
+						os.Exit(1)
+					}
+					data[startURL] = linkOutput
+					file, err := json.MarshalIndent(data, "", " ")
+					if err != nil {
+						fmt.Println(err.Error())
+						os.Exit(1)
+					}
+					// fmt.Println(file)
+					_ = ioutil.WriteFile(outputJSON, file, 0644)
+				} else {
+					output[startURL] = linkOutput
 				}
-				// fmt.Println(file)
-				_ = ioutil.WriteFile(outputJSON, file, 0644)
-			} else {
-				output[startURL] = linkOutput
 			}
 		}
 	}
