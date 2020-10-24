@@ -4,25 +4,24 @@ import (
 	"context"
 	"crypto/tls"
 	"encoding/json"
-	"strings"
-	// "encoding/csv"
-	// "encoding/xml"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"net/url"
+	"os"
 	"reflect"
+	"strings"
 
 	// change from 3rd party packages to golang packages
-	"github.com/chromedp/chromedp"
 	"github.com/PuerkitoBio/goquery"
+	"github.com/chromedp/chromedp"
 	"github.com/dlclark/regexp2"
 	// "golang.org/x/net/proxy"
 )
 
 var (
-	config *Config
+	config     *Config
 	proxyIndex = 0
 )
 
@@ -70,7 +69,7 @@ func readSettingsJSON() {
 	if err != nil {
 		log.Println(err)
 	}
-	// 
+	//
 	config = &settings
 }
 
@@ -474,30 +473,43 @@ func scraper(siteMap *Scraping, parent string) interface{} {
 			}
 		}
 		if len(linkOutput) != 0 {
-			output[startURL] = linkOutput
-		}
+			if parent == "_root" {
+				out, err := ioutil.ReadFile(outputJSON)
+				if err != nil {
+					fmt.Printf("Error while reading %s file\n", outputJSON)
+					os.Exit(1)
+				}
 
+				var data map[string]interface{}
+				err = json.Unmarshal(out, &data)
+				if err != nil {
+					fmt.Printf("Failed to unmarshal %s file\n", outputJSON)
+					os.Exit(1)
+				}
+				data[startURL] = linkOutput
+				file, err := json.MarshalIndent(data, "", " ")
+				if err != nil {
+					fmt.Println(err.Error())
+					os.Exit(1)
+				}
+				// fmt.Println(file)
+				_ = ioutil.WriteFile(outputJSON, file, 0644)
+			} else {
+				output[startURL] = linkOutput
+			}
+		}
 	}
 	return output
 }
 
 func main() {
+	_ = ioutil.WriteFile(outputJSON, []byte("{}"), 0644)
 	siteMap := readSiteMap()
 	readSettingsJSON()
 
-	var finalOutput interface{}
-
 	if config.JavaScript {
-		finalOutput = JSScraper(siteMap, "_root")
+		_ = JSScraper(siteMap, "_root")
 	} else {
-		finalOutput = scraper(siteMap, "_root")
+		_ = scraper(siteMap, "_root")
 	}
-
-	file, err := json.MarshalIndent(finalOutput, "", " ")
-	if err != nil {
-		fmt.Println(err.Error())
-		return
-	}
-
-	_ = ioutil.WriteFile(outputJSON, file, 0644)
 }
