@@ -78,15 +78,15 @@ func clearCache() {
 		os.RemoveAll(os.TempDir())
 		debug.FreeOSMemory()
 	default:
-		fmt.Println("Removed the cache")
+		os.RemoveAll(os.TempDir())
+		debug.FreeOSMemory()
 	}
 }
 
 func readSettingsJSON() {
 	// open the file and read the file
 	data, err := ioutil.ReadFile(settingsConfig)
-	// define data struture
-	// json data
+	// define data struture, json data
 	var settings Config
 	err = json.Unmarshal(data, &settings)
 	// log any errors
