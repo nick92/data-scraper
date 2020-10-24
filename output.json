@@ -1,8 +1,2077 @@
-[
-    {
-        "https://www.prajwalkoirala.com": {
-            "name": "Prajwal Koirala",
-            "picture": "https://www.prajwalkoirala.com/avatar.webp"
-        }
-    }
-]
+{
+ "https://voterrecords.com/voters/1": {
+  "details-selector": {
+   "https://voterrecords.com/voter/1/monte-downare": {
+    "alt-location": "Hartsel, Colorado",
+    "gender-selector": "Male",
+    "party-selector": "Unaffiliated",
+    "person-name": "Monte V Downare",
+    "phone-number": "Lives in:  Hartsel, Colorado\n\nPhone:  View phone number",
+    "registration-date": "11/22/1983",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/10/laura-wedow": {
+    "alt-location": "Fairplay, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "300 Sleepy Grass Ct Fairplay, Co 80440",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Laura Lynn Wedow",
+    "phone-number": "(719) 836-2258",
+    "registration-date": "07/30/1991",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/11/michael-yeary": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "66 Burdett St Bailey, Co 80421",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Michael A Yeary",
+    "phone-number": "(303) 838-9807",
+    "registration-date": "08/01/1991",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/3/emily-moore": {
+    "alt-location": "Crawford, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "3634 Clear Fork Rd Crawford, Co 81415",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Emily Michelle Yount Moore",
+    "phone-number": "Lives in:  Crawford, Colorado\n\nPhone:  View phone number",
+    "registration-date": "06/27/2014",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/4/brenda-carter": {
+    "alt-location": "Boulder, Colorado",
+    "gender-selector": "Female",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Brenda Lavelle Carter",
+    "phone-number": "Lives in:  Boulder, Colorado\n\nPhone:  View phone number",
+    "registration-date": "03/14/2013",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/5/robert-melihercik": {
+    "alt-location": "Arvada, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "8388 Quay Dr Arvada, Co 80003",
+    "party-selector": "Democratic Party",
+    "person-name": "Robert Charles Melihercik",
+    "phone-number": "(859) 445-7193",
+    "registration-date": "09/02/2014",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/6/katja-schiefer": {
+    "alt-location": "Clifton, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "633 Livvy Ct Clifton, Co 81520",
+    "party-selector": "Unaffiliated",
+    "person-name": "Katja Ann Schiefer",
+    "phone-number": "(303) 589-9964",
+    "registration-date": "12/31/2015",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/7/katherine-tomsichevans": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "403 Rustlers Rd Bailey, Co 80421",
+    "party-selector": "Unaffiliated",
+    "person-name": "Katherine Elaine Tomsich Evans",
+    "phone-number": "Lives in:  Bailey, Colorado\n\nPhone:  View phone number",
+    "registration-date": "02/15/2000",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/8/sharon-kniseley": {
+    "alt-location": "Como, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "350 Gap Rd Como, Co 80432",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Sharon J Kniseley",
+    "phone-number": "(719) 836-0275",
+    "registration-date": "02/22/2000",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/9/derek-vankeulen": {
+    "alt-location": "Aurora, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "920 S Walden Way #204 Aurora, Co 80017",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Derek Thomas Van Keulen",
+    "phone-number": "Lives in:  Aurora, Colorado\n\nPhone:  View phone number",
+    "registration-date": "09/19/2019",
+    "voter-status": "Active"
+   }
+  }
+ },
+ "https://voterrecords.com/voters/10": {
+  "details-selector": {
+   "https://voterrecords.com/voter/100/gerald-davis": {
+    "alt-location": "Fairplay, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "320 3rd St Fairplay, Co 80440",
+    "party-selector": "Democratic Party",
+    "person-name": "Gerald Neil Davis",
+    "phone-number": "Lives in:  Fairplay, Colorado\n\nPhone:  View phone number",
+    "registration-date": "12/01/1961",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/101/barbara-jones": {
+    "alt-location": "Denver, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "1621 N Garfield St Denver, Co 80206",
+    "party-selector": "Unaffiliated",
+    "person-name": "Barbara Mae Jones",
+    "phone-number": "Lives in:  Denver, Colorado\n\nPhone:  View phone number",
+    "registration-date": "11/02/2014",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/92/shelley-nelson": {
+    "alt-location": "Denver, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "777 N Emerson St Apt 122 Denver, Co 80218",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Shelley Lynn Nelson",
+    "phone-number": "(612) 240-2204",
+    "registration-date": "06/02/2011",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/93/neal-haze": {
+    "alt-location": "Fairplay, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "2406 Lakeside Dr Fairplay, Co 80440",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Neal James Haze Jr",
+    "phone-number": "(785) 256-4495",
+    "registration-date": "08/14/1987",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/94/stanley-johnson": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "475 Holmes Gulch Rd Bailey, Co 80421",
+    "party-selector": "Unaffiliated",
+    "person-name": "Stanley Dean Johnson",
+    "phone-number": "(303) 838-5933",
+    "registration-date": "07/13/1988",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/95/christina-williams": {
+    "alt-location": "Strasburg, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "1274 N Short Beach Ct Strasburg, Co 80136",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Christina Nicole Raisch",
+    "phone-number": "(303) 945-1297",
+    "registration-date": "08/10/2010",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/96/makenzie-miller": {
+    "alt-location": "Lakewood, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "12247 W Ohio Dr Lakewood, Co 80228",
+    "party-selector": "Unaffiliated",
+    "person-name": "Makenzie Camille Steen Miller",
+    "phone-number": "(719) 232-5665",
+    "registration-date": "11/06/2017",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/97/vicky-palser": {
+    "alt-location": "Windsor, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "1208 Fairfield Ave Windsor, Co 80550",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Vicky Lynn Palser",
+    "phone-number": "Lives in:  Windsor, Colorado\n\nPhone:  View phone number",
+    "registration-date": "01/10/2019",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/98/brenna-hermen": {
+    "alt-location": "Aurora, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "25622 E Indore Dr Aurora, Co 80016",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Brenna Tamiko Hermen",
+    "phone-number": "Lives in:  Aurora, Colorado\n\nPhone:  View phone number",
+    "registration-date": "12/22/2014",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/99/johnny-rotz": {
+    "alt-location": "Lake George, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "841 County Road 112 Unit #a-17 Lake George, Co 80827",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Johnny L Rotz",
+    "phone-number": "(719) 748-3667",
+    "registration-date": "07/16/1980",
+    "voter-status": "Active"
+   }
+  }
+ },
+ "https://voterrecords.com/voters/11": {
+  "details-selector": {
+   "https://voterrecords.com/voter/102/kimberly-davison": {
+    "alt-location": "Denver, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "8500 York St Denver, Co 80229",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Kimberly Ann Davison",
+    "phone-number": "(303) 364-3924",
+    "registration-date": "08/16/2019",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/103/dean-davison": {
+    "alt-location": "Aurora, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "1036 Troy St Aurora, Co 80011",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Dean Evan Davison",
+    "phone-number": "(303) 364-3924",
+    "registration-date": "09/28/2012",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/104/beverly-church": {
+    "alt-location": "Denver, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "6960 E Girard Ave Apt 301 Denver, Co 80224",
+    "party-selector": "Democratic Party",
+    "person-name": "Beverly Jacques Church",
+    "phone-number": "Lives in:  Denver, Colorado\n\nPhone:  View phone number",
+    "registration-date": "09/26/2013",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/105/christine-carlson": {
+    "alt-location": "Aurora, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "7953 S Addison Way Aurora, Co 80016",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Christine Ellen Carlson",
+    "phone-number": "Lives in:  Aurora, Colorado\n\nPhone:  View phone number",
+    "registration-date": "06/15/2011",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/106/anthony-garcia": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "1648 County Road 43 Bailey, Co 80421",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Anthony Ezekiel Garcia",
+    "phone-number": "(303) 838-9573",
+    "registration-date": "03/03/2000",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/107/brittany-lavertyward": {
+    "alt-location": "Littleton, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "4720 W Easter Ct Littleton, Co 80128",
+    "party-selector": "Democratic Party",
+    "person-name": "Brittany Laverty Ward",
+    "phone-number": "(908) 872-7988",
+    "registration-date": "10/14/2013",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/108/kelli-yurgartis": {
+    "alt-location": "Littleton, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "7626 Dusk St Littleton, Co 80125",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Kelli Marie Yurgartis",
+    "phone-number": "Lives in:  Littleton, Colorado\n\nPhone:  View phone number",
+    "registration-date": "08/01/2016",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/109/joseph-schmidt": {
+    "alt-location": "Colo Springs, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "617 Erie Rd Colo Springs, Co 80910",
+    "party-selector": "Unaffiliated",
+    "person-name": "Joseph Paul Schmidt",
+    "phone-number": "(719) 282-5292",
+    "registration-date": "10/02/2012",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/110/james-clark": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "255 Timbertop Rd Bailey, Co 80421",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "James Wayne Clark",
+    "phone-number": "(303) 838-7186",
+    "registration-date": "04/14/2000",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/111/sharon-winterrowd": {
+    "alt-location": "Pueblo West, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "939 S Cellini Pl Pueblo West, Co 81007",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Sharon Margery Winterrowd",
+    "phone-number": "(303) 887-1028",
+    "registration-date": "05/16/2014",
+    "voter-status": "Active"
+   }
+  }
+ },
+ "https://voterrecords.com/voters/12": {
+  "details-selector": {
+   "https://voterrecords.com/voter/112/claudia-serafin": {
+    "alt-location": "Denver, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "1875 S Grant St Denver, Co 80210",
+    "party-selector": "Democratic Party",
+    "person-name": "Claudia Serafin",
+    "phone-number": "(303) 888-4311",
+    "registration-date": "07/08/2008",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/113/kendall-surdal": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "160 Elkhorn Ct Bailey, Co 80421",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Kendall Lee Surdal",
+    "phone-number": "(303) 838-2541",
+    "registration-date": "08/30/1991",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/114/valerie-tilley": {
+    "alt-location": "Loveland, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "1693 Sandstone Dr Loveland, Co 80537",
+    "party-selector": "Unaffiliated",
+    "person-name": "Valerie Jean Tilley",
+    "phone-number": "(719) 836-2639",
+    "registration-date": "05/25/2016",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/115/robert-tilley": {
+    "alt-location": "Fairplay, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "812 Main St Fairplay, Co 80440",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Robert Douglas Tilley",
+    "phone-number": "(719) 836-2639",
+    "registration-date": "10/03/1991",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/116/joel-blatt": {
+    "alt-location": "Mead, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "105 Red Wing Ct Mead, Co 80542",
+    "party-selector": "Democratic Party",
+    "person-name": "Joel M Blatt",
+    "phone-number": "Lives in:  Mead, Colorado\n\nPhone:  View phone number",
+    "registration-date": "05/17/2007",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/117/kim-hulko": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "144 Sun Way Bailey, Co 80421",
+    "party-selector": "Unaffiliated",
+    "person-name": "Kim Michael Hulko",
+    "phone-number": "(303) 838-0707",
+    "registration-date": "10/09/1991",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/118/sidney-martin": {
+    "alt-location": "Grand Junction, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "2630 Birch Ct Grand Junction, Co 81506",
+    "party-selector": "American Constitution Party",
+    "person-name": "Sidney Wayne Martin",
+    "phone-number": "(240) 413-6301",
+    "registration-date": "06/17/2011",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/119/lawrence-bertin": {
+    "alt-location": "Como, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "16514 Elkhorn Rd Como, Co 80432",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Lawrence Russell Bertin",
+    "phone-number": "(719) 836-3234",
+    "registration-date": "10/23/1991",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/120/jose-aceves": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "1228 Tapadero Rd Bailey, Co 80421",
+    "party-selector": "Unaffiliated",
+    "person-name": "Jose Daniel Aceves",
+    "phone-number": "(303) 838-5663",
+    "registration-date": "10/12/1988",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/121/christopher-johnson": {
+    "alt-location": "Denver, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "10321 E 26th Ave Denver, Co 80238",
+    "party-selector": "Unaffiliated",
+    "person-name": "Christopher Rolf Johnson",
+    "phone-number": "Lives in:  Denver, Colorado\n\nPhone:  View phone number",
+    "registration-date": "09/22/2016",
+    "voter-status": "Inactive"
+   }
+  }
+ },
+ "https://voterrecords.com/voters/13": {
+  "details-selector": {
+   "https://voterrecords.com/voter/122/phillip-martinez": {
+    "alt-location": "Arvada, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "8737 Chase Dr # 148 Arvada, Co 80003",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Phillip Apolito Martinez",
+    "phone-number": "(303) 456-4461",
+    "registration-date": "08/19/2010",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/123/rachelle-hernandez": {
+    "alt-location": "Pueblo, Colorado",
+    "gender-selector": "Female",
+    "party-selector": "Democratic Party",
+    "person-name": "Rachelle Judene Hernandez",
+    "phone-number": "Lives in:  Pueblo, Colorado\n\nPhone:  View phone number",
+    "registration-date": "07/20/2005",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/124/daniel-montez": {
+    "alt-location": "Denver, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "240 N Stuart St Denver, Co 80219",
+    "party-selector": "Democratic Party",
+    "person-name": "Daniel C Montez",
+    "phone-number": "Lives in:  Denver, Colorado\n\nPhone:  View phone number",
+    "registration-date": "04/09/1983",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/125/charlotte-chance": {
+    "alt-location": "Whitewater, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "1285 Kannah Creek Rd Whitewater, Co 81527",
+    "party-selector": "Unaffiliated",
+    "person-name": "Charlotte Arlene Chance",
+    "phone-number": "Lives in:  Whitewater, Colorado\n\nPhone:  View phone number",
+    "registration-date": "06/23/2011",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/126/tracy-downare": {
+    "alt-location": "Hartsel, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "23138 County Road 59 Hartsel, Co 80449",
+    "party-selector": "Unaffiliated",
+    "person-name": "Tracy Lynn Downare",
+    "phone-number": "Lives in:  Hartsel, Colorado\n\nPhone:  View phone number",
+    "registration-date": "02/14/1979",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/127/david-hamm": {
+    "alt-location": "Colo Springs, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "2051 Glenhill Rd Colo Springs, Co 80906",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "David Gordon Hamm",
+    "phone-number": "(719) 576-1612",
+    "registration-date": "04/21/2011",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/128/david-white": {
+    "alt-location": "Littleton, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "5045 S Newcombe Ct Littleton, Co 80127",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "David Leon White",
+    "phone-number": "Lives in:  Littleton, Colorado\n\nPhone:  View phone number",
+    "registration-date": "04/13/2010",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/129/theresa-white": {
+    "alt-location": "Littleton, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "5045 S Newcombe Ct Littleton, Co 80127",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Theresa C White",
+    "phone-number": "(303) 880-3390",
+    "registration-date": "04/28/2010",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/130/john-mcgill": {
+    "alt-location": "Fairplay, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "833 Deer Trail Dr Fairplay, Co 80440",
+    "party-selector": "Unaffiliated",
+    "person-name": "John Richard Mcgill",
+    "phone-number": "(303) 278-0198",
+    "registration-date": "01/04/2000",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/131/jamie-boyda": {
+    "alt-location": "Thornton, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "2801 E 120th Ave Unit D309 Thornton, Co 80233",
+    "party-selector": "Democratic Party",
+    "person-name": "Jamie Danielle Boyda",
+    "phone-number": "(720) 938-4081",
+    "registration-date": "10/02/2008",
+    "voter-status": "Inactive"
+   }
+  }
+ },
+ "https://voterrecords.com/voters/14": {
+  "details-selector": {
+   "https://voterrecords.com/voter/132/preston-boyer": {
+    "alt-location": "Colo Springs, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "1511 Chadwick Dr Colo Springs, Co 80906",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Preston Allen Boyer",
+    "phone-number": "(720) 499-4020",
+    "registration-date": "06/10/2018",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/133/wendy-moore": {
+    "alt-location": "Colo Springs, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "2515 Verde Dr #104 Colo Springs, Co 80910",
+    "party-selector": "Democratic Party",
+    "person-name": "Wendy Sue Moore",
+    "phone-number": "(719) 313-9328",
+    "registration-date": "09/28/2018",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/134/ryan-burg": {
+    "alt-location": "Berthoud, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "620 W County Road 10e Berthoud, Co 80513",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Ryan Austin Burg",
+    "phone-number": "Lives in:  Berthoud, Colorado\n\nPhone:  View phone number",
+    "registration-date": "10/31/2016",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/135/stormy-burge": {
+    "alt-location": "Brighton, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "560 N 45th Ave Brighton, Co 80601",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Stormy Lynn Burge",
+    "phone-number": "(303) 552-6774",
+    "registration-date": "06/08/2016",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/136/william-hewitt": {
+    "alt-location": "Shawnee, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "53643 Hwy 285 Shawnee, Co 80475",
+    "party-selector": "Unaffiliated",
+    "person-name": "William Grey Hewitt",
+    "phone-number": "Lives in:  Shawnee, Colorado\n\nPhone:  View phone number",
+    "registration-date": "03/08/2000",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/137/robert-whissen": {
+    "alt-location": "Dumont, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "288 Mill Creek Rd Dumont, Co 80436",
+    "party-selector": "Unaffiliated",
+    "person-name": "Robert E Whissen",
+    "phone-number": "(303) 567-2924",
+    "registration-date": "03/02/2007",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/138/robert-kraus": {
+    "alt-location": "Fairplay, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "640 Deer Trail Dr Fairplay, Co 80440",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Robert M Kraus",
+    "phone-number": "Lives in:  Fairplay, Colorado\n\nPhone:  View phone number",
+    "registration-date": "02/07/2000",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/139/jack-kirby": {
+    "alt-location": "Lake George, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "8768 County Road 90 Lake George, Co 80827",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Jack Lee Kirby",
+    "phone-number": "(719) 748-3144",
+    "registration-date": "11/18/1991",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/140/robert-narozanick": {
+    "alt-location": "Alma, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "1155 County Road 6 Alma, Co 80420",
+    "party-selector": "Democratic Party",
+    "person-name": "Robert Charles Narozanick Jr",
+    "phone-number": "(719) 836-3143",
+    "registration-date": "12/06/1991",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/141/warren-baker": {
+    "alt-location": "Lakewood, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "2235 Nelson Ct Lakewood, Co 80215",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Warren Glen Baker Jr",
+    "phone-number": "(303) 838-1122",
+    "registration-date": "01/30/2008",
+    "voter-status": "Active"
+   }
+  }
+ },
+ "https://voterrecords.com/voters/15": {
+  "details-selector": {
+   "https://voterrecords.com/voter/142/devin-clousing": {
+    "alt-location": "Aurora, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "21323 E Oxford Ave Aurora, Co 80013",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Devin James Clousing",
+    "phone-number": "(720) 771-8620",
+    "registration-date": "05/10/1996",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/143/ronald-estrella": {
+    "alt-location": "Colo Springs, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "5905 Del Paz Dr Colo Springs, Co 80918",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Ronald Estrella",
+    "phone-number": "Lives in:  Colo Springs, Colorado\n\nPhone:  View phone number",
+    "registration-date": "06/23/2011",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/144/john-susi": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "141 Tall Timber Ln Bailey, Co 80421",
+    "party-selector": "Unaffiliated",
+    "person-name": "John Patrick Susi",
+    "phone-number": "(303) 838-6716",
+    "registration-date": "01/04/1990",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/145/wayne-louderback": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "458 Juniper Ln Bailey, Co 80421",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Wayne Nelson Louderback",
+    "phone-number": "(303) 838-2408",
+    "registration-date": "08/04/1982",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/146/lindy-evers": {
+    "alt-location": "Monument, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "443 N Washington St Monument, Co 80132",
+    "party-selector": "Unaffiliated",
+    "person-name": "Lindy Louise Griffith",
+    "phone-number": "Lives in:  Monument, Colorado\n\nPhone:  View phone number",
+    "registration-date": "06/23/2011",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/147/nancy-decker": {
+    "alt-location": "Centennial, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "4751 E Costilla Ave #111 Centennial, Co 80122",
+    "party-selector": "Democratic Party",
+    "person-name": "Nancy S Decker",
+    "phone-number": "(303) 752-8967",
+    "registration-date": "07/07/2004",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/148/howard-spires": {
+    "alt-location": "Colo Springs, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "7023 Flowering Almond Dr Colo Springs, Co 80923",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Howard Ivy Spires",
+    "phone-number": "Lives in:  Colo Springs, Colorado\n\nPhone:  View phone number",
+    "registration-date": "08/11/2010",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/149/karen-prentiss": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "147 Mount Evans Blvd Bailey, Co 80421",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Karen Harper Prentiss",
+    "phone-number": "(303) 838-2628",
+    "registration-date": "03/12/1996",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/150/kenneth-madsen": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "4718 County Road 72 Bailey, Co 80421",
+    "party-selector": "Unaffiliated",
+    "person-name": "Kenneth Eugene Madsen Sr",
+    "phone-number": "Lives in:  Bailey, Colorado\n\nPhone:  View phone number",
+    "registration-date": "07/11/1979",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/151/jo-weaver": {
+    "alt-location": "Guffey, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "262 Post Rd Guffey, Co 80820",
+    "party-selector": "Democratic Party",
+    "person-name": "Jo Dee Weaver",
+    "phone-number": "(719) 689-2326",
+    "registration-date": "04/21/1986",
+    "voter-status": "Inactive"
+   }
+  }
+ },
+ "https://voterrecords.com/voters/16": {
+  "details-selector": {
+   "https://voterrecords.com/voter/152/antoni-venables": {
+    "alt-location": "Pine, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "2356 Mount Evans Blvd Pine, Co 80470",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Antoni Anita Venables",
+    "phone-number": "(303) 838-9805",
+    "registration-date": "06/07/1985",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/153/linda-stone": {
+    "alt-location": "Lake George, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "744 Whale Dr Lake George, Co 80827",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Linda Cheryl Stone",
+    "phone-number": "(602) 369-7815",
+    "registration-date": "07/01/2010",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/154/mary-haman": {
+    "alt-location": "Fort Garland, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "3229 Siverd Rd Fort Garland, Co 81133",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Mary K Haman",
+    "phone-number": "(303) 816-4297",
+    "registration-date": "08/18/2011",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/155/patricia-tabatabai": {
+    "alt-location": "Highlands Ranch, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "3625 Pointer Way Highlands Ranch, Co 80126",
+    "party-selector": "Democratic Party",
+    "person-name": "Patricia Ruth Tabatabai",
+    "phone-number": "Lives in:  Highlands Ranch, Colorado\n\nPhone:  View phone number",
+    "registration-date": "01/31/2007",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/156/dawn-ketchum": {
+    "alt-location": "Cripple Creek, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "325 E Galena Ave #104 Cripple Creek, Co 80813",
+    "party-selector": "Unaffiliated",
+    "person-name": "Dawn B Ketchum",
+    "phone-number": "(719) 689-5697",
+    "registration-date": "10/01/2007",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/157/mitch-bruce": {
+    "alt-location": "Lasalle, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "100 Church Ct Lasalle, Co 80645",
+    "party-selector": "Unaffiliated",
+    "person-name": "Mitch A Bruce",
+    "phone-number": "(970) 381-6806",
+    "registration-date": "10/04/2008",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/158/crystal-sherwood": {
+    "alt-location": "Lamar, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "3604 Memorial Dr Lamar, Co 81052",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Crystal Ann Sherwood",
+    "phone-number": "Lives in:  Lamar, Colorado\n\nPhone:  View phone number",
+    "registration-date": "09/22/2008",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/159/jacquelyn-roe": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "64 Bad Bandit Ln Bailey, Co 80421",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Jacquelyn Kay Roe",
+    "phone-number": "(303) 838-6836",
+    "registration-date": "07/02/1990",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/160/hannah-hodge": {
+    "alt-location": "Dillon, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "675 Straight Creek Dr Unit I101 Dillon, Co 80435",
+    "party-selector": "Democratic Party",
+    "person-name": "Hannah Nicole Hodge",
+    "phone-number": "(719) 293-0405",
+    "registration-date": "02/26/2018",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/161/rachell-bangs": {
+    "alt-location": "Parker, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "17581 Pine Ln #4101 Parker, Co 80134",
+    "party-selector": "Unaffiliated",
+    "person-name": "Rachell Leah Bangs",
+    "phone-number": "Lives in:  Parker, Colorado\n\nPhone:  View phone number",
+    "registration-date": "02/03/2017",
+    "voter-status": "Inactive"
+   }
+  }
+ },
+ "https://voterrecords.com/voters/17": {
+  "details-selector": {
+   "https://voterrecords.com/voter/162/donald-roe": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "64 Bad Bandit Ln Bailey, Co 80421",
+    "party-selector": "Unaffiliated",
+    "person-name": "Donald Robert Roe",
+    "phone-number": "(303) 838-6836",
+    "registration-date": "07/15/1990",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/163/barbara-nelson": {
+    "alt-location": "Denver, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "9900 E Girard Ave Apt 208 Denver, Co 80231",
+    "party-selector": "Democratic Party",
+    "person-name": "Barbara A Nelson",
+    "phone-number": "(720) 937-1091",
+    "registration-date": "04/04/2011",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/164/jennifer-adugyamfi": {
+    "alt-location": "Centennial, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "7382 S Downing Cir E Centennial, Co 80122",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Jennifer Luree Adu Gyamfi",
+    "phone-number": "(303) 475-7963",
+    "registration-date": "04/01/2013",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/165/david-fuqua": {
+    "alt-location": "Denver, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "8525 E Hampden Ave Apt 501 Denver, Co 80231",
+    "party-selector": "Unaffiliated",
+    "person-name": "David Lee Fuqua",
+    "phone-number": "(720) 283-6804",
+    "registration-date": "02/14/2020",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/166/jacqueline-keller": {
+    "alt-location": "Centennial, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "1799 E Geddes Cir S Centennial, Co 80122",
+    "party-selector": "Democratic Party",
+    "person-name": "Jacqueline Rene Keller",
+    "phone-number": "Lives in:  Centennial, Colorado\n\nPhone:  View phone number",
+    "registration-date": "10/04/2004",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/167/bich-phan": {
+    "alt-location": "Centennial, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "7164 S Clarkson St Centennial, Co 80122",
+    "party-selector": "Democratic Party",
+    "person-name": "Bich Nhung Thi Phan",
+    "phone-number": "Lives in:  Centennial, Colorado\n\nPhone:  View phone number",
+    "registration-date": "04/20/2005",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/168/brittany-penn": {
+    "alt-location": "Parker, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "19151 E Clear Creek Dr Parker, Co 80134",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Brittany Jaclyn Nicolo",
+    "phone-number": "Lives in:  Parker, Colorado\n\nPhone:  View phone number",
+    "registration-date": "01/04/2018",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/169/jayme-vanhoye": {
+    "alt-location": "Littleton, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "9023 W Cross Dr #101 Littleton, Co 80123",
+    "party-selector": "Democratic Party",
+    "person-name": "Jayme Janelle Van Hoye",
+    "phone-number": "(720) 939-5054",
+    "registration-date": "09/26/2018",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/170/arjumand-khan": {
+    "alt-location": "Aurora, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "3091 S Evanston Way Aurora, Co 80014",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Arjumand A Khan",
+    "phone-number": "(303) 347-2757",
+    "registration-date": "04/08/1994",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/171/jill-mekelburg": {
+    "alt-location": "Eckley, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "14800 County Road 46 Eckley, Co 80727",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Jill Arlene Mekelburg",
+    "phone-number": "(970) 359-2498",
+    "registration-date": "08/21/2000",
+    "voter-status": "Active"
+   }
+  }
+ },
+ "https://voterrecords.com/voters/18": {
+  "details-selector": {
+   "https://voterrecords.com/voter/172/joshua-gulizia": {
+    "alt-location": "Centennial, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "7158 S Lincoln Way Centennial, Co 80122",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Joshua Heber Gulizia",
+    "phone-number": "(303) 795-3509",
+    "registration-date": "05/21/2004",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/173/nicola-perry": {
+    "alt-location": "Centennial, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "7761 S Kit Carson Dr Centennial, Co 80122",
+    "party-selector": "Democratic Party",
+    "person-name": "Nicola Sue Perry",
+    "phone-number": "(303) 795-5251",
+    "registration-date": "01/22/2003",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/174/devon-turner": {
+    "alt-location": "Centennial, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "1770 E Jamison Pl Centennial, Co 80122",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Devon Ray Turner",
+    "phone-number": "Lives in:  Centennial, Colorado\n\nPhone:  View phone number",
+    "registration-date": "02/13/2003",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/175/jeffrey-allen": {
+    "alt-location": "Berthoud, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "881 Ranchhand Dr Berthoud, Co 80513",
+    "party-selector": "Unaffiliated",
+    "person-name": "Jeffrey Brian Allen",
+    "phone-number": "Lives in:  Berthoud, Colorado\n\nPhone:  View phone number",
+    "registration-date": "09/16/2016",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/176/thomas-russo": {
+    "alt-location": "Englewood, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "3296 W Pimlico Dr Englewood, Co 80110",
+    "party-selector": "Unaffiliated",
+    "person-name": "Thomas Sebastian Russo",
+    "phone-number": "(720) 472-1411",
+    "registration-date": "11/03/1998",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/177/jeffrey-speer": {
+    "alt-location": "Wheat Ridge, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "10350 W 44th Ave #3c Wheat Ridge, Co 80033",
+    "party-selector": "Democratic Party",
+    "person-name": "Jeffrey Joe Speer",
+    "phone-number": "Lives in:  Wheat Ridge, Colorado\n\nPhone:  View phone number",
+    "registration-date": "06/24/2008",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/178/anne-bailey": {
+    "alt-location": "Centennial, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "7668 S Williams St Centennial, Co 80122",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Anne M Bailey",
+    "phone-number": "(303) 730-3790",
+    "registration-date": "06/30/1989",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/179/morgan-webb": {
+    "alt-location": "Centennial, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "2151 E Kettle Ave Centennial, Co 80122",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Morgan Anthony Webb",
+    "phone-number": "(303) 734-0446",
+    "registration-date": "05/17/2004",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/180/debra-contreras": {
+    "alt-location": "Centennial, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "7790 S Kit Carson Dr Centennial, Co 80122",
+    "party-selector": "Unaffiliated",
+    "person-name": "Debra Ann Contreras",
+    "phone-number": "(303) 995-6162",
+    "registration-date": "11/21/1996",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/181/caitlin-monnens": {
+    "alt-location": "Centennial, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "2277 E Mineral Ave Centennial, Co 80122",
+    "party-selector": "Democratic Party",
+    "person-name": "Caitlin A Monnens",
+    "phone-number": "(303) 794-9104",
+    "registration-date": "07/27/2004",
+    "voter-status": "Inactive"
+   }
+  }
+ },
+ "https://voterrecords.com/voters/19": {
+  "details-selector": {
+   "https://voterrecords.com/voter/182/rebecca-ullmann": {
+    "alt-location": "Aurora, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "16871 E Lake Ln Aurora, Co 80016",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Rebecca Elaine Ullmann",
+    "phone-number": "(303) 210-3745",
+    "registration-date": "08/06/2003",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/183/melvin-wellstead": {
+    "alt-location": "Englewood, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "1900 E Girard Pl #1002 Englewood, Co 80113",
+    "party-selector": "Unaffiliated",
+    "person-name": "Melvin H Wellstead",
+    "phone-number": "(303) 781-1212",
+    "registration-date": "05/14/1986",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/184/sharon-davies": {
+    "alt-location": "Englewood, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "4505 S Pennsylvania St Englewood, Co 80113",
+    "party-selector": "Democratic Party",
+    "person-name": "Sharon Elizabeth Davies",
+    "phone-number": "Lives in:  Englewood, Colorado\n\nPhone:  View phone number",
+    "registration-date": "12/30/1999",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/185/tammy-bourke": {
+    "alt-location": "Centennial, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "6589 E Euclid Pl Centennial, Co 80111",
+    "party-selector": "Democratic Party",
+    "person-name": "Tammy Marie Bourke",
+    "phone-number": "(303) 504-6245",
+    "registration-date": "02/25/2004",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/186/elizabeth-goding": {
+    "alt-location": "Denver, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "10200 E Harvard Ave Apt 319 Denver, Co 80231",
+    "party-selector": "Unaffiliated",
+    "person-name": "Elizabeth Esther Goding",
+    "phone-number": "(303) 755-0508",
+    "registration-date": "10/09/2012",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/187/claudia-abrams": {
+    "alt-location": "Littleton, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "582 W Prentice Ave #104 Littleton, Co 80120",
+    "party-selector": "Unaffiliated",
+    "person-name": "Claudia Abrams",
+    "phone-number": "(720) 229-3148",
+    "registration-date": "11/03/2014",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/188/gary-price": {
+    "alt-location": "Centennial, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "7980 E Phillips Cir Centennial, Co 80112",
+    "party-selector": "Democratic Party",
+    "person-name": "Gary Price",
+    "phone-number": "(303) 759-2503",
+    "registration-date": "10/10/2000",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/189/anne-fuglei": {
+    "alt-location": "Englewood, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "5360 Sanford Cir E Englewood, Co 80113",
+    "party-selector": "Democratic Party",
+    "person-name": "Anne Michelle Fuglei",
+    "phone-number": "Lives in:  Englewood, Colorado\n\nPhone:  View phone number",
+    "registration-date": "01/06/2004",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/190/nicole-gordon": {
+    "alt-location": "Englewood, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "5582 E Oxford Ave Englewood, Co 80113",
+    "party-selector": "Democratic Party",
+    "person-name": "Nicole D Gordon",
+    "phone-number": "(303) 892-6900",
+    "registration-date": "01/29/2001",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/191/stacie-joslin": {
+    "alt-location": "Denver, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "9228 E Mansfield Ave Denver, Co 80237",
+    "party-selector": "Unaffiliated",
+    "person-name": "Stacie Lanette Taylor",
+    "phone-number": "(303) 517-1616",
+    "registration-date": "05/02/2013",
+    "voter-status": "Inactive"
+   }
+  }
+ },
+ "https://voterrecords.com/voters/2": {
+  "details-selector": {
+   "https://voterrecords.com/voter/12/pamela-allen": {
+    "alt-location": "Fairplay, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "326 Aspen Way Fairplay, Co 80440",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Pamela Marie Allen",
+    "phone-number": "(719) 836-0402",
+    "registration-date": "02/20/1992",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/13/janet-humke": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "1200 Crow Valley Rd Bailey, Co 80421",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Janet Kay Humke",
+    "phone-number": "(303) 838-0307",
+    "registration-date": "02/24/1992",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/14/robert-manes": {
+    "alt-location": "Pine, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "1112 Nova Rd Pine, Co 80470",
+    "party-selector": "Unaffiliated",
+    "person-name": "Robert Virgil Manes",
+    "phone-number": "(303) 838-7141",
+    "registration-date": "06/11/1987",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/15/gail-alschuler": {
+    "alt-location": "Fort Collins, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "3416 Continental Cir Fort Collins, Co 80526",
+    "party-selector": "Democratic Party",
+    "person-name": "Gail Ellen Alschuler",
+    "phone-number": "(970) 682-5026",
+    "registration-date": "06/20/2011",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/16/mary-campbell": {
+    "alt-location": "Guffey, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "1071 County Road 71 Guffey, Co 80820",
+    "party-selector": "Democratic Party",
+    "person-name": "Mary L Campbell",
+    "phone-number": "(719) 689-3150",
+    "registration-date": "08/14/1952",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/17/robert-campbell": {
+    "alt-location": "Guffey, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "1071 County Road 71 Guffey, Co 80820",
+    "party-selector": "Democratic Party",
+    "person-name": "Robert Dale Campbell",
+    "phone-number": "(719) 689-3150",
+    "registration-date": "09/15/1948",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/18/rebecca-willis": {
+    "alt-location": "Colo Springs, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "330 N Murray Blvd Apt 108 Colo Springs, Co 80916",
+    "party-selector": "Democratic Party",
+    "person-name": "Rebecca Charlene Willis",
+    "phone-number": "(719) 502-0483",
+    "registration-date": "05/18/2010",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/19/bonnie-logan": {
+    "alt-location": "Grant, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "47100 Hwy 285 Grant, Co 80448",
+    "party-selector": "Unaffiliated",
+    "person-name": "Bonnie Kay Logan",
+    "phone-number": "(303) 838-7994",
+    "registration-date": "08/02/1978",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/20/linda-zimmerman": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "325 Yellow Pine Dr Bailey, Co 80421",
+    "party-selector": "Democratic Party",
+    "person-name": "Linda Gayle Zimmerman",
+    "phone-number": "(303) 838-4103",
+    "registration-date": "08/02/1984",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/21/patricia-lucy": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "587 Impala Trl Bailey, Co 80421",
+    "party-selector": "Unaffiliated",
+    "person-name": "Patricia Danette Lucy",
+    "phone-number": "(303) 838-7678",
+    "registration-date": "03/13/1986",
+    "voter-status": "Active"
+   }
+  }
+ },
+ "https://voterrecords.com/voters/20": {
+  "details-selector": {
+   "https://voterrecords.com/voter/192/li-zhang": {
+    "alt-location": "Centennial, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "463 E Highline Cir Centennial, Co 80122",
+    "party-selector": "Unaffiliated",
+    "person-name": "Li Min Zhang",
+    "phone-number": "Lives in:  Centennial, Colorado\n\nPhone:  View phone number",
+    "registration-date": "06/06/2000",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/193/matthew-ellis": {
+    "alt-location": "Denver, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "4647 S Lowell Blvd Unit C Denver, Co 80236",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Matthew Daniel Ellis",
+    "phone-number": "(303) 961-5555",
+    "registration-date": "12/30/2015",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/194/michael-joslin": {
+    "alt-location": "Littleton, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "9380 W Burgundy Ave Littleton, Co 80123",
+    "party-selector": "Unaffiliated",
+    "person-name": "Michael Allan Joslin",
+    "phone-number": "Lives in:  Littleton, Colorado\n\nPhone:  View phone number",
+    "registration-date": "09/29/2008",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/195/louis-schenkeir": {
+    "alt-location": "Littleton, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "5390 S Elati St #3 Littleton, Co 80120",
+    "party-selector": "Democratic Party",
+    "person-name": "Louis Ray Schenkeir",
+    "phone-number": "(303) 730-8292",
+    "registration-date": "08/31/2000",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/196/robert-dow": {
+    "alt-location": "Centennial, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "7130 S Franklin Way Centennial, Co 80122",
+    "party-selector": "Democratic Party",
+    "person-name": "Robert M Dow",
+    "phone-number": "Lives in:  Centennial, Colorado\n\nPhone:  View phone number",
+    "registration-date": "10/11/1988",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/197/ronald-schmitt": {
+    "alt-location": "Centennial, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "1393 E Easter Cir Centennial, Co 80122",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Ronald Jeffrey Schmitt",
+    "phone-number": "(303) 408-5508",
+    "registration-date": "11/16/1999",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/198/deanna-curtis": {
+    "alt-location": "Fountain, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "8644 Indian Village Hts Fountain, Co 80817",
+    "party-selector": "Unaffiliated",
+    "person-name": "Deanna M Curtis",
+    "phone-number": "(303) 734-0384",
+    "registration-date": "04/27/2018",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/199/steven-goggin": {
+    "alt-location": "Englewood, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "4421 S Clarkson St Englewood, Co 80113",
+    "party-selector": "Democratic Party",
+    "person-name": "Steven William Goggin",
+    "phone-number": "(303) 781-1884",
+    "registration-date": "05/03/1993",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/200/elizabeth-hunt": {
+    "alt-location": "Aurora, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "17534 E Greenwood Cir Aurora, Co 80013",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Elizabeth Jean Hunt",
+    "phone-number": "(303) 726-4212",
+    "registration-date": "11/02/2004",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/201/shaun-monge": {
+    "alt-location": "Morrison, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "11605 W Saratoga Pl Morrison, Co 80465",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Shaun Patrick Reilly",
+    "phone-number": "Lives in:  Morrison, Colorado\n\nPhone:  View phone number",
+    "registration-date": "07/09/2019",
+    "voter-status": "Active"
+   }
+  }
+ },
+ "https://voterrecords.com/voters/3": {
+  "details-selector": {
+   "https://voterrecords.com/voter/22/bridget-slevin": {
+    "alt-location": "Castle Rock, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "4531 Silver Gate Dr Castle Rock, Co 80108",
+    "party-selector": "Unaffiliated",
+    "person-name": "Bridget Kathleen Slevin",
+    "phone-number": "Lives in:  Castle Rock, Colorado\n\nPhone:  View phone number",
+    "registration-date": "10/14/2015",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/23/barbara-sterling": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "81 Fir Ln Bailey, Co 80421",
+    "party-selector": "Unaffiliated",
+    "person-name": "Barbara Laverne Sterling",
+    "phone-number": "(303) 838-4042",
+    "registration-date": "10/06/1988",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/24/wilma-perizzolo": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "654 Tapadero Rd Bailey, Co 80421",
+    "party-selector": "Unaffiliated",
+    "person-name": "Wilma Denise Perizzolo",
+    "phone-number": "(303) 838-9618",
+    "registration-date": "11/10/1983",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/25/cheri-coleman": {
+    "alt-location": "Woodland Park, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "65 Markus Rd Woodland Park, Co 80863",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Cheri Ann Coleman",
+    "phone-number": "(719) 339-5446",
+    "registration-date": "11/09/2016",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/26/kathleen-greising": {
+    "alt-location": "Fairplay, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "680 Silverheels Cir Fairplay, Co 80440",
+    "party-selector": "Democratic Party",
+    "person-name": "Kathleen Joan Greising",
+    "phone-number": "(719) 836-2732",
+    "registration-date": "03/03/1978",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/27/scott-trent": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "808 Sleepy Hollow Dr Bailey, Co 80421",
+    "party-selector": "Libertarian Party",
+    "person-name": "Scott Stevenson Trent",
+    "phone-number": "(303) 838-4593",
+    "registration-date": "02/16/2012",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/28/douglas-lingusky": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "832 S Pine Dr Bailey, Co 80421",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Douglas Roy Lingusky",
+    "phone-number": "(303) 838-5665",
+    "registration-date": "04/18/1984",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/29/wayne-balliett": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "206 Range View Dr Bailey, Co 80421",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Wayne Arlen Balliett",
+    "phone-number": "(303) 838-7917",
+    "registration-date": "03/28/1984",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/30/miguel-jara": {
+    "alt-location": "Aurora, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "14701 E Colfax Ave Apt G44 Aurora, Co 80011",
+    "party-selector": "Democratic Party",
+    "person-name": "Miguel Diaz Jara Diaz",
+    "phone-number": "(720) 885-8988",
+    "registration-date": "08/10/2012",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/31/carl-ozanic": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "14 Two Bits St Bailey, Co 80421",
+    "party-selector": "Unaffiliated",
+    "person-name": "Carl Francis Ozanic",
+    "phone-number": "Lives in:  Bailey, Colorado\n\nPhone:  View phone number",
+    "registration-date": "10/05/1984",
+    "voter-status": "Active"
+   }
+  }
+ },
+ "https://voterrecords.com/voters/4": {
+  "details-selector": {
+   "https://voterrecords.com/voter/32/myrna-moyle": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "1556 Tapadero Rd Bailey, Co 80421",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Myrna Lea Moyle",
+    "phone-number": "(303) 838-2733",
+    "registration-date": "05/30/1986",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/33/kyle-kucera": {
+    "alt-location": "Woodland Park, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "310 Evergreen St Woodland Park, Co 80863",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Kyle Robert Kucera",
+    "phone-number": "Lives in:  Woodland Park, Colorado\n\nPhone:  View phone number",
+    "registration-date": "04/11/2001",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/34/mark-kirkmeyer": {
+    "alt-location": "Colo Springs, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "2601 N Chestnut St Colo Springs, Co 80907",
+    "party-selector": "Democratic Party",
+    "person-name": "Mark Irvin Kirkmeyer",
+    "phone-number": "(719) 352-4447",
+    "registration-date": "08/19/2009",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/35/craig-jirka": {
+    "alt-location": "Fairplay, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "958 Vots Dr Fairplay, Co 80440",
+    "party-selector": "Unaffiliated",
+    "person-name": "Craig Robert Jirka",
+    "phone-number": "(719) 839-1541",
+    "registration-date": "01/05/2000",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/36/odilia-portillo": {
+    "alt-location": "Colo Springs, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "1125 Costigan Dr Colo Springs, Co 80911",
+    "party-selector": "Unaffiliated",
+    "person-name": "Odilia Portillo",
+    "phone-number": "(719) 502-9010",
+    "registration-date": "09/20/2004",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/37/alexander-wylder": {
+    "alt-location": "Breckenridge, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "16135 Hwy 9 Unit B5 Breckenridge, Co 80424",
+    "party-selector": "Democratic Party",
+    "person-name": "Alexander Wylder",
+    "phone-number": "Lives in:  Breckenridge, Colorado\n\nPhone:  View phone number",
+    "registration-date": "03/20/2013",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/38/william-hebert": {
+    "alt-location": "Garfield, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "22720 W Us Highway 50 Garfield, Co 81227",
+    "party-selector": "Democratic Party",
+    "person-name": "William John Hebert",
+    "phone-number": "Lives in:  Garfield, Colorado\n\nPhone:  View phone number",
+    "registration-date": "11/24/2010",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/39/deborah-sterner": {
+    "alt-location": "Pueblo, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "22 Wasatch Dr Pueblo, Co 81005",
+    "party-selector": "Unaffiliated",
+    "person-name": "Deborah Kay Sterner",
+    "phone-number": "(719) 568-7716",
+    "registration-date": "06/16/2016",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/40/cindy-sanchez": {
+    "alt-location": "Denver, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "1599 N Williams St Apt 602 Denver, Co 80218",
+    "party-selector": "Democratic Party",
+    "person-name": "Cindy Sanchez",
+    "phone-number": "(303) 623-5957",
+    "registration-date": "07/31/2012",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/41/pam-barron-parkos": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "524 Yellow Pine Dr Bailey, Co 80421",
+    "party-selector": "Democratic Party",
+    "person-name": "Pam Jean Barron-Parkos",
+    "phone-number": "(303) 838-5259",
+    "registration-date": "02/06/1992",
+    "voter-status": "Active"
+   }
+  }
+ },
+ "https://voterrecords.com/voters/5": {
+  "details-selector": {
+   "https://voterrecords.com/voter/42/michael-vanek": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "550 Conifer Dr Bailey, Co 80421",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Michael Dean Vanek",
+    "phone-number": "(303) 915-8234",
+    "registration-date": "07/20/1990",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/43/eunice-ankrum": {
+    "alt-location": "Guffey, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "2048 County Road 132 Guffey, Co 80820",
+    "party-selector": "Democratic Party",
+    "person-name": "Eunice May Ankrum",
+    "phone-number": "(719) 689-3272",
+    "registration-date": "08/18/1960",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/44/paul-leeper": {
+    "alt-location": "Loveland, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "425 W 8th St Loveland, Co 80537",
+    "party-selector": "Unaffiliated",
+    "person-name": "Paul Clark Leeper",
+    "phone-number": "(720) 323-5506",
+    "registration-date": "01/03/2008",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/45/timothy-jones": {
+    "alt-location": "Hartsel, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "79 Fossil Ln Hartsel, Co 80449",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Timothy Wesley Jones",
+    "phone-number": "Lives in:  Hartsel, Colorado\n\nPhone:  View phone number",
+    "registration-date": "10/13/1988",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/46/denise-bromberger": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "137 Desparado Rd Bailey, Co 80421",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Denise Ann Bromberger",
+    "phone-number": "(303) 838-6381",
+    "registration-date": "02/09/1990",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/47/jessica-ledingham": {
+    "alt-location": "Littleton, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "7827 S Marshall Ct Littleton, Co 80128",
+    "party-selector": "Unaffiliated",
+    "person-name": "Jessica Jane Ledingham",
+    "phone-number": "Lives in:  Littleton, Colorado\n\nPhone:  View phone number",
+    "registration-date": "06/11/2010",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/48/april-mcgahhey": {
+    "alt-location": "Montrose, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "13451 L Rd Montrose, Co 81403",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "April Elizabeth Mcgahhey",
+    "phone-number": "(970) 390-0217",
+    "registration-date": "05/11/2016",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/49/michelle-dinan": {
+    "alt-location": "Littleton, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "7093 S Johnson St Littleton, Co 80128",
+    "party-selector": "Democratic Party",
+    "person-name": "Michelle Lynn Dinan",
+    "phone-number": "(720) 273-1092",
+    "registration-date": "09/17/2014",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/50/constance-rodriguez": {
+    "alt-location": "Loveland, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "1609 Hillary Dr Loveland, Co 80537",
+    "party-selector": "Unaffiliated",
+    "person-name": "Constance Marie Rodriguez",
+    "phone-number": "(970) 652-1264",
+    "registration-date": "02/21/2020",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/51/duane-riley": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "187 Catamount Ln Bailey, Co 80421",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Duane Arthur Riley",
+    "phone-number": "(303) 838-6801",
+    "registration-date": "10/03/1980",
+    "voter-status": "Active"
+   }
+  }
+ },
+ "https://voterrecords.com/voters/6": {
+  "details-selector": {
+   "https://voterrecords.com/voter/52/ana-velazquez": {
+    "alt-location": "Loveland, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "2221 S Garfield Ave Loveland, Co 80537",
+    "party-selector": "Unaffiliated",
+    "person-name": "Ana Martin Velazquez",
+    "phone-number": "Lives in:  Loveland, Colorado\n\nPhone:  View phone number",
+    "registration-date": "06/11/2019",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/53/pamela-jacobus": {
+    "alt-location": "Crawford, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "37230 Fruitland Mesa Rd Crawford, Co 81415",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Pamela Joan Jacobus",
+    "phone-number": "(303) 838-6839",
+    "registration-date": "08/29/2017",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/54/penelope-franks": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "1874 Mockingbird Trl Bailey, Co 80421",
+    "party-selector": "Unaffiliated",
+    "person-name": "Penelope Campbell Franks",
+    "phone-number": "(303) 838-2618",
+    "registration-date": "05/23/1984",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/55/steven-mcfadden": {
+    "alt-location": "Alma, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "1 S Main St Alma, Co 80420",
+    "party-selector": "Unaffiliated",
+    "person-name": "Steven Ray Mcfadden",
+    "phone-number": "(719) 836-1491",
+    "registration-date": "01/10/2000",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/56/samantha-bertin": {
+    "alt-location": "Como, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "16514 Elkhorn Rd Como, Co 80432",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Samantha Jane Bertin",
+    "phone-number": "(719) 836-3234",
+    "registration-date": "10/08/1991",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/57/christopher-stone": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "389 Brookside Dr Bailey, Co 80421",
+    "party-selector": "Unaffiliated",
+    "person-name": "Christopher Lee Stone",
+    "phone-number": "(303) 838-2386",
+    "registration-date": "10/05/1991",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/58/pamela-craig": {
+    "alt-location": "Longmont, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "1242 Bross St Longmont, Co 80501",
+    "party-selector": "Democratic Party",
+    "person-name": "Pamela Ann Craig",
+    "phone-number": "Lives in:  Longmont, Colorado\n\nPhone:  View phone number",
+    "registration-date": "08/13/2008",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/59/rudolph-deherrera": {
+    "alt-location": "Pueblo, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "102 Gale Ave Pueblo, Co 81004",
+    "party-selector": "Democratic Party",
+    "person-name": "Rudolph E Deherrera",
+    "phone-number": "Lives in:  Pueblo, Colorado\n\nPhone:  View phone number",
+    "registration-date": "09/06/2017",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/60/gerald-hobbs": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "1226 Delwood Dr Bailey, Co 80421",
+    "party-selector": "Democratic Party",
+    "person-name": "Gerald Frank Hobbs",
+    "phone-number": "(303) 838-1239",
+    "registration-date": "12/26/1991",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/61/douglas-tamminga": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "1454 Clark Rd Bailey, Co 80421",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Douglas John Tamminga",
+    "phone-number": "(303) 838-2521",
+    "registration-date": "01/20/1992",
+    "voter-status": "Active"
+   }
+  }
+ },
+ "https://voterrecords.com/voters/7": {
+  "details-selector": {
+   "https://voterrecords.com/voter/62/gerald-alcorn": {
+    "alt-location": "Alma, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "2626 County Road 4 Alma, Co 80420",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Gerald Michael Alcorn",
+    "phone-number": "(719) 836-2982",
+    "registration-date": "01/22/1992",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/63/devera-clements": {
+    "alt-location": "Denver, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "2295 S Beeler Way Denver, Co 80231",
+    "party-selector": "Democratic Party",
+    "person-name": "Devera Bell Clements",
+    "phone-number": "(303) 337-2245",
+    "registration-date": "10/03/1996",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/64/joy-labadie": {
+    "alt-location": "Fort Collins, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "327 Riva Ridge Dr #d206 Fort Collins, Co 80526",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Joy Cherise Labadie",
+    "phone-number": "(970) 223-5463",
+    "registration-date": "08/22/1997",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/65/eric-frazee": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "183 Smith St Bailey, Co 80421",
+    "party-selector": "Democratic Party",
+    "person-name": "Eric Blevins Frazee",
+    "phone-number": "(303) 838-4535",
+    "registration-date": "07/07/1982",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/66/troy-durbin": {
+    "alt-location": "Thornton, Colorado",
+    "gender-selector": "Male",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Troy James Durbin",
+    "phone-number": "Lives in:  Thornton, Colorado\n\nPhone:  View phone number",
+    "registration-date": "03/18/2014",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/67/diane-prosser": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "951 Desparado Rd Bailey, Co 80421",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Diane Marie Prosser",
+    "phone-number": "(303) 838-7693",
+    "registration-date": "08/09/1978",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/68/larry-pollock": {
+    "alt-location": "Denver, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "3131 E Alameda Ave Unit 403 Denver, Co 80209",
+    "party-selector": "Democratic Party",
+    "person-name": "Larry Jay Pollock",
+    "phone-number": "(720) 475-1331",
+    "registration-date": "01/03/2012",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/69/arlen-hagen": {
+    "alt-location": "Shawnee, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "66 Jessica Ln Shawnee, Co 80475",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Arlen Ray Hagen",
+    "phone-number": "(303) 838-0950",
+    "registration-date": "08/14/1987",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/70/cecilia-clark": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "25 Highlands Dr Bailey, Co 80421",
+    "party-selector": "Unaffiliated",
+    "person-name": "Cecilia I Clark",
+    "phone-number": "(303) 838-7911",
+    "registration-date": "09/19/1989",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/71/toni-holte": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "1343 Vigilante Ave Bailey, Co 80421",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Toni Ann Holte",
+    "phone-number": "(303) 816-2040",
+    "registration-date": "01/12/2000",
+    "voter-status": "Inactive"
+   }
+  }
+ },
+ "https://voterrecords.com/voters/8": {
+  "details-selector": {
+   "https://voterrecords.com/voter/72/jacquelene-gottschalk": {
+    "alt-location": "Evans, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "3602 Cactus Ave Evans, Co 80620",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Jacquelene Carol Gottschalk",
+    "phone-number": "(970) 590-7965",
+    "registration-date": "11/08/2016",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/73/derek-kearns": {
+    "alt-location": "Littleton, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "7236 S Kendall Blvd Littleton, Co 80128",
+    "party-selector": "Unaffiliated",
+    "person-name": "Derek Paul Kearns",
+    "phone-number": "Lives in:  Littleton, Colorado\n\nPhone:  View phone number",
+    "registration-date": "10/24/2014",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/74/maria-casarez": {
+    "alt-location": "Ft Lupton, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "1857 Trail Blazer Rd Ft Lupton, Co 80621",
+    "party-selector": "Democratic Party",
+    "person-name": "Maria Teresita Casarez",
+    "phone-number": "(303) 570-7375",
+    "registration-date": "07/09/2009",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/75/wesley-brown": {
+    "alt-location": "Thornton, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "13665 Locust St Thornton, Co 80602",
+    "party-selector": "Unaffiliated",
+    "person-name": "Wesley Richard Raymond Brown",
+    "phone-number": "Lives in:  Thornton, Colorado\n\nPhone:  View phone number",
+    "registration-date": "03/20/2013",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/76/michael-hankinson": {
+    "alt-location": "Pine, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "2186 Mount Evans Blvd Pine, Co 80470",
+    "party-selector": "Democratic Party",
+    "person-name": "Michael Leo Hankinson",
+    "phone-number": "(303) 816-5330",
+    "registration-date": "01/21/2000",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/77/deborah-davenport": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "295 Clark Rd Bailey, Co 80421",
+    "party-selector": "Democratic Party",
+    "person-name": "Deborah Anne Davenport",
+    "phone-number": "(303) 981-7346",
+    "registration-date": "01/14/2000",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/78/michael-carter": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "1718 Roland Dr Bailey, Co 80421",
+    "party-selector": "Unaffiliated",
+    "person-name": "Michael Wesley Carter",
+    "phone-number": "(720) 402-5205",
+    "registration-date": "10/04/2018",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/79/cheryl-hamblin": {
+    "alt-location": "Elizabeth, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "1497 Shoshone Trl Elizabeth, Co 80107",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Cheryl Ann Hamblin",
+    "phone-number": "(303) 646-3124",
+    "registration-date": "11/07/2006",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/80/christina-goebel": {
+    "alt-location": "Thornton, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "2002 E 99th Pl Thornton, Co 80229",
+    "party-selector": "Unaffiliated",
+    "person-name": "Christina Katsuko Goebel",
+    "phone-number": "Lives in:  Thornton, Colorado\n\nPhone:  View phone number",
+    "registration-date": "01/04/2012",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/81/robin-reynolds": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "5 Teal Ln Bailey, Co 80421",
+    "party-selector": "Unaffiliated",
+    "person-name": "Robin Fay Reynolds",
+    "phone-number": "(303) 838-2196",
+    "registration-date": "10/10/1990",
+    "voter-status": "Active"
+   }
+  }
+ },
+ "https://voterrecords.com/voters/9": {
+  "details-selector": {
+   "https://voterrecords.com/voter/82/chris-hazelbaker": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "169 Brookside Dr Bailey, Co 80421",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Chris L Hazelbaker",
+    "phone-number": "(303) 838-6979",
+    "registration-date": "10/03/1990",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/83/judith-delaney": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Female",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Judith Elaine Delaney",
+    "phone-number": "Lives in:  Bailey, Colorado\n\nPhone:  View phone number",
+    "registration-date": "10/03/1990",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/84/matthew-brown": {
+    "alt-location": "Highlands Ranch, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "600 W County Line Rd # 14-201 Highlands Ranch, Co 80129",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Matthew John Brown",
+    "phone-number": "Lives in:  Highlands Ranch, Colorado\n\nPhone:  View phone number",
+    "registration-date": "01/12/2004",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/85/maureen-barnes": {
+    "alt-location": "Leadville, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "131 W 12th St # 105 Leadville, Co 80461",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Maureen Barnes",
+    "phone-number": "(719) 293-2213",
+    "registration-date": "08/10/2010",
+    "voter-status": "Inactive"
+   },
+   "https://voterrecords.com/voter/86/harold-geiss": {
+    "alt-location": "Lakewood, Colorado",
+    "gender-selector": "Male",
+    "location-selector": "2333 S Harlan Ct Lakewood, Co 80227",
+    "party-selector": "Democratic Party",
+    "person-name": "Harold George Geiss",
+    "phone-number": "(303) 838-5604",
+    "registration-date": "09/15/2014",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/87/peggy-cook": {
+    "alt-location": "Colo Springs, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "1685 S Twenty First St Apt 213 Colo Springs, Co 80904",
+    "party-selector": "Unaffiliated",
+    "person-name": "Peggy Jean Cook",
+    "phone-number": "(719) 358-7810",
+    "registration-date": "01/21/2015",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/88/heidi-cessna": {
+    "alt-location": "Colo Springs, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "5490 Slickrock Dr Colo Springs, Co 80923",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Heidi May Speer",
+    "phone-number": "(303) 704-0421",
+    "registration-date": "10/06/2014",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/89/cynthia-burgett": {
+    "alt-location": "Bailey, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "810 Tincup Ter Bailey, Co 80421",
+    "party-selector": "Colorado Republican Party",
+    "person-name": "Cynthia Leigh Burgett",
+    "phone-number": "(303) 838-4037",
+    "registration-date": "02/03/1992",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/90/randi-trowbridge": {
+    "alt-location": "Snowmass, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "301 Waterview Snowmass, Co 81654",
+    "party-selector": "Democratic Party",
+    "person-name": "Randi Michelle Trowbridge",
+    "phone-number": "(970) 456-2595",
+    "registration-date": "04/13/2010",
+    "voter-status": "Active"
+   },
+   "https://voterrecords.com/voter/91/loretta-brethen": {
+    "alt-location": "Grand Junction, Colorado",
+    "gender-selector": "Female",
+    "location-selector": "587 Kirby Ln Grand Junction, Co 81504",
+    "party-selector": "Unaffiliated",
+    "person-name": "Loretta Sue Brethen",
+    "phone-number": "Lives in:  Grand Junction, Colorado\n\nPhone:  View phone number",
+    "registration-date": "06/20/2011",
+    "voter-status": "Active"
+   }
+  }
+ }
+}

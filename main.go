@@ -3,6 +3,7 @@ package main
 import (
 	"crypto/tls"
 	"encoding/json"
+	"os"
 
 	// "encoding/csv"
 	// "encoding/xml"
@@ -383,7 +384,31 @@ func scraper(siteMap *Scraping, parent string) interface{} {
 			}
 		}
 		if len(linkOutput) != 0 {
-			output[startURL] = linkOutput
+			if parent == "_root" {
+				out, err := ioutil.ReadFile(outputJSON)
+				if err != nil {
+					fmt.Printf("Error while reading %s file\n", outputJSON)
+					os.Exit(1)
+				}
+
+				var data map[string]interface{}
+				err = json.Unmarshal(out, &data)
+				if err != nil {
+					fmt.Printf("Failed to unmarshal %s file\n", outputJSON)
+					os.Exit(1)
+				}
+				fmt.Printf("linkoutput: %v", linkOutput)
+				data[startURL] = linkOutput
+				file, err := json.MarshalIndent(data, "", " ")
+				if err != nil {
+					fmt.Println(err.Error())
+					os.Exit(1)
+				}
+				// fmt.Println(file)
+				_ = ioutil.WriteFile(outputJSON, file, 0644)
+			} else {
+				output[startURL] = linkOutput
+			}
 		}
 
 	}
@@ -391,15 +416,8 @@ func scraper(siteMap *Scraping, parent string) interface{} {
 }
 
 func main() {
+	_ = ioutil.WriteFile(outputJSON, []byte("{}"), 0644)
 	siteMap := readSiteMap()
-	finalOutput := scraper(siteMap, "_root")
-
-	file, err := json.MarshalIndent(finalOutput, "", " ")
-	if err != nil {
-		fmt.Println(err.Error())
-		return
-	}
-
-	_ = ioutil.WriteFile(outputJSON, file, 0644)
+	_ = scraper(siteMap, "_root")
 
 }
