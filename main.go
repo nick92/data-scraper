@@ -359,7 +359,30 @@ func JSScraper(siteMap *Scraping, parent string) interface{} {
 		}
 
 		if len(linkOutput) != 0 {
-			output[startURL] = linkOutput
+			if parent == "_root" {
+				out, err := ioutil.ReadFile(outputJSON)
+				if err != nil {
+					fmt.Printf("Error while reading %s file\n", outputJSON)
+					os.Exit(1)
+				}
+
+				var data map[string]interface{}
+				err = json.Unmarshal(out, &data)
+				if err != nil {
+					fmt.Printf("Failed to unmarshal %s file\n", outputJSON)
+					os.Exit(1)
+				}
+				data[startURL] = linkOutput
+				file, err := json.MarshalIndent(data, "", " ")
+				if err != nil {
+					fmt.Println(err.Error())
+					os.Exit(1)
+				}
+				// fmt.Println(file)
+				_ = ioutil.WriteFile(outputJSON, file, 0644)
+			} else {
+				output[startURL] = linkOutput
+			}
 		}
 	}
 
@@ -469,6 +492,7 @@ func scraper(siteMap *Scraping, parent string) map[string]interface{} {
 					doc := crawlURL(startURL)
 					if selector.Type == "SelectorText" {
 						resultText := SelectorText(doc, &selector)
+						// fmt.Printf("text resultText = %v", resultText)
 						if len(resultText) != 0 {
 							if len(resultText) == 1 {
 								linkOutput[selector.ID] = resultText[0]
@@ -485,11 +509,9 @@ func scraper(siteMap *Scraping, parent string) map[string]interface{} {
 									siteMap.StartURL = append(siteMap.StartURL, link)
 								}
 							}
-							// fmt.Printf("appended urls : %v\n", siteMap.StartUrl)
-							// urlLength = len(siteMap.StartURL)
+
 						} else {
 							childSelector := getChildSelector(&selector)
-							// fmt.Println(childSelector)
 							if childSelector == true {
 								linkOutput[selector.ID] = links
 							} else {
@@ -521,7 +543,7 @@ func scraper(siteMap *Scraping, parent string) map[string]interface{} {
 					}
 				}
 			}
-			// fmt.Printf("linkoutput = %v", linkOutput)
+			fmt.Printf("linkoutput = %v", linkOutput)
 			if len(linkOutput) != 0 {
 				if parent == "_root" {
 					out, err := ioutil.ReadFile(outputJSON)
