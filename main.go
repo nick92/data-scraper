@@ -69,8 +69,6 @@ func clearCache() {
 		// temp files
 		os.RemoveAll(os.TempDir())
 		debug.FreeOSMemory()
-		// old files
-		os.Remove("C:/Windows.old")
 	case "darwin":
 		// temp files
 		os.RemoveAll(os.TempDir())
@@ -79,9 +77,6 @@ func clearCache() {
 		// temp files
 		os.RemoveAll(os.TempDir())
 		debug.FreeOSMemory()
-		// old files
-		os.Remove("/vmlinuz.old")
-		os.Remove("/initrd.img.old")
 	default:
 		fmt.Println("Removed the cache")
 	}
