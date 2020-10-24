@@ -383,7 +383,7 @@ func emulateURL(url string, selType string, selector string) string {
 		)
 
 		if err != nil {
-			log.Fatal(err)
+			log.Println(err)
 		}
 
 	} else if selType == "SelectorImage" || selType == "SelectorLink" || selType == "SelectorElementAttribute" {
@@ -394,7 +394,7 @@ func emulateURL(url string, selType string, selector string) string {
 		)
 
 		if err != nil {
-			log.Fatal(err)
+			log.Println(err)
 		}
 
 		if selType == "SelectorLink" {
