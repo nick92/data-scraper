@@ -486,7 +486,6 @@ func scraper(siteMap *Scraping, parent string) interface{} {
 					fmt.Printf("Failed to unmarshal %s file\n", outputJSON)
 					os.Exit(1)
 				}
-				fmt.Printf("linkoutput: %v", linkOutput)
 				data[startURL] = linkOutput
 				file, err := json.MarshalIndent(data, "", " ")
 				if err != nil {
@@ -499,7 +498,6 @@ func scraper(siteMap *Scraping, parent string) interface{} {
 				output[startURL] = linkOutput
 			}
 		}
-
 	}
 	return output
 }
@@ -507,24 +505,11 @@ func scraper(siteMap *Scraping, parent string) interface{} {
 func main() {
 	_ = ioutil.WriteFile(outputJSON, []byte("{}"), 0644)
 	siteMap := readSiteMap()
-	_ = scraper(siteMap, "_root")
-
 	readSettingsJSON()
 
-	var finalOutput interface{}
-
 	if config.JavaScript {
-		finalOutput = JSScraper(siteMap, "_root")
+		_ = JSScraper(siteMap, "_root")
 	} else {
-		finalOutput = scraper(siteMap, "_root")
+		_ = scraper(siteMap, "_root")
 	}
-
-	file, err := json.MarshalIndent(finalOutput, "", " ")
-	if err != nil {
-		fmt.Println(err.Error())
-		return
-	}
-
-	_ = ioutil.WriteFile(outputJSON, file, 0644)
-
 }
