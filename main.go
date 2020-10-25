@@ -11,7 +11,6 @@ import (
 	"net/url"
 	"os"
 	"reflect"
-	"runtime"
 	"runtime/debug"
 	"strconv"
 	"strings"
@@ -63,52 +62,36 @@ type Config struct {
 
 // To function properly, a lot of memory is needed to clean up files.
 func clearCache() {
-	operatingSystem := runtime.GOOS
-	switch operatingSystem {
-	case "windows":
-		// temp files
-		os.RemoveAll(os.TempDir())
-		debug.FreeOSMemory()
-	case "darwin":
-		// temp files
-		os.RemoveAll(os.TempDir())
-		debug.FreeOSMemory()
-	case "linux":
-		// temp files
-		os.RemoveAll(os.TempDir())
-		debug.FreeOSMemory()
-	default:
-		fmt.Println("Removed the cache")
-	}
+	// temp files
+	os.RemoveAll(os.TempDir())
+	debug.FreeOSMemory()
 }
 
 func readSettingsJSON() {
 	// open the file and read the file
 	data, err := ioutil.ReadFile(settingsConfig)
-	// define data struture
-	// json data
+	// define data struture, json data
 	var settings Config
 	err = json.Unmarshal(data, &settings)
 	// log any errors
 	if err != nil {
 		log.Println(err)
 	}
-	//
+	// set config to settings
 	config = &settings
 }
 
 func readSiteMap() *Scraping {
 	// open the file and read the file
 	data, err := ioutil.ReadFile(scrapingConfig)
-
+	// define data struture, json data
 	var scrape Scraping
 	err = json.Unmarshal(data, &scrape)
-
 	// log any errors
 	if err != nil {
 		log.Println(err)
 	}
-
+	// return a value
 	return &scrape
 }
 
@@ -145,7 +128,7 @@ func SelectorLink(doc *goquery.Document, selector *Selectors, baseURL string) []
 	doc.Find(selector.Selector).EachWithBreak(func(i int, s *goquery.Selection) bool {
 		href, ok := s.Attr("href")
 		if !ok {
-			fmt.Printf("HREF has not been found")
+			fmt.Println("HREF has not been found")
 		}
 
 		links = append(links, toFixedURL(href, baseURL))
