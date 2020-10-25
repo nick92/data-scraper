@@ -145,7 +145,7 @@ func SelectorLink(doc *goquery.Document, selector *Selectors, baseURL string) []
 	doc.Find(selector.Selector).EachWithBreak(func(i int, s *goquery.Selection) bool {
 		href, ok := s.Attr("href")
 		if !ok {
-			fmt.Printf("HREF has not been found")
+			fmt.Println("HREF has not been found")
 		}
 
 		links = append(links, toFixedURL(href, baseURL))
