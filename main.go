@@ -63,24 +63,9 @@ type Config struct {
 
 // To function properly, a lot of memory is needed to clean up files.
 func clearCache() {
-	operatingSystem := runtime.GOOS
-	switch operatingSystem {
-	case "windows":
-		// temp files
-		os.RemoveAll(os.TempDir())
-		debug.FreeOSMemory()
-	case "darwin":
-		// temp files
-		os.RemoveAll(os.TempDir())
-		debug.FreeOSMemory()
-	case "linux":
-		// temp files
-		os.RemoveAll(os.TempDir())
-		debug.FreeOSMemory()
-	default:
-		os.RemoveAll(os.TempDir())
-		debug.FreeOSMemory()
-	}
+	// temp files
+	os.RemoveAll(os.TempDir())
+	debug.FreeOSMemory()
 }
 
 func readSettingsJSON() {
@@ -93,22 +78,21 @@ func readSettingsJSON() {
 	if err != nil {
 		log.Println(err)
 	}
-	//
+	// set config to settings
 	config = &settings
 }
 
 func readSiteMap() *Scraping {
 	// open the file and read the file
 	data, err := ioutil.ReadFile(scrapingConfig)
-
+	// define data struture, json data
 	var scrape Scraping
 	err = json.Unmarshal(data, &scrape)
-
 	// log any errors
 	if err != nil {
 		log.Println(err)
 	}
-
+	// return a value
 	return &scrape
 }
 
