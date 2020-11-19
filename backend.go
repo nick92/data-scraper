@@ -9,6 +9,7 @@ import (
 	"encoding/json"
 	"encoding/xml"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -75,11 +76,38 @@ type workerJob struct {
 }
 
 type audioPostBody struct {
-	Audio audioPostAudio `json:"audio"`
+	Audio  audioPostAudio    `json:"audio"`
+	Config recognitionConfig `json:"config"`
 }
 
 type audioPostAudio struct {
-	Uri string `json:"uri"`
+	Content string `json:"content"`
+}
+
+type speechRecognitionResponse struct {
+	Result []speechRecognitionAlternativeResult `json:"results"`
+}
+
+type speechRecognitionAlternativeResult struct {
+	Alternatives []speechRecognitionAlternative `json:"alternatives"`
+	ChannelTag   int                            `json:"channelTag"`
+}
+
+type speechRecognitionAlternative struct {
+	Transcript string     `json:"transcript"`
+	Confidence float64    `json:"confidence"`
+	Words      []wordInfo `json:"words"`
+}
+
+type wordInfo struct {
+	StartTime string `json:"startTime"`
+	EndTime   string `json:"endTime"`
+	Word      string `json:"word"`
+}
+
+type recognitionConfig struct {
+	LanguageCode string `json:"languageCode"`
+	Model        string `json:"model"`
 }
 
 func clearCache() {
@@ -277,31 +305,56 @@ func selectorTable(doc *goquery.Document, selector *selectors) map[string]interf
 	return table
 }
 
-func DownloadFile(filepath string, url string) error {
-
+func GetCatchaText(url string) (string, error) {
+	var speechBody speechRecognitionResponse
 	// Get the data
 	resp, err := http.Get(url)
 	if err != nil {
-		return err
+		return "", err
 	}
 	defer resp.Body.Close()
 
-	content, _ := ioutil.ReadAll(resp.Body)
+	buf := new(bytes.Buffer)
+
+	// Write the body to the buffer
+	_, err = io.Copy(buf, resp.Body)
+
+	if err != nil {
+		return "", err
+	}
 
 	audioBody := &audioPostBody{
 		Audio: audioPostAudio{
-			Uri: "",
+			Content: base64.RawURLEncoding.EncodeToString(buf.Bytes()),
+		},
+		Config: recognitionConfig{
+			LanguageCode: "en-US",
+			Model:        "video",
 		},
 	}
 
 	reqBody, err := json.Marshal(audioBody)
-	
+
+	fmt.Print(string(reqBody))
+
 	// Get the data
-	resp, err := http.Post("https://speech.googleapis.com/v1/speech:recognize?key=AIzaSyAYg5R5b-GqsFP9XlYRgGk2k8sVJTm0xgk", "application/json", bytes.NewBuffer(reqBody))
-		return err
+	speechResp, err := http.Post("https://speech.googleapis.com/v1p1beta1/speech:recognize?key=AIzaSyAYg5R5b-GqsFP9XlYRgGk2k8sVJTm0xgk", "application/json", bytes.NewBuffer(reqBody))
+
+	if err != nil {
+		return "", err
 	}
-	
-	defer resp.Body.Close()
+
+	defer speechResp.Body.Close()
+
+	fmt.Print(speechResp.Body)
+
+	err = json.NewDecoder(speechResp.Body).Decode(&speechBody)
+
+	if err != nil {
+		return "", err
+	}
+
+	return speechBody.Result[0].Alternatives[0].Transcript, nil
 }
 
 func crawlURL(href, userAgent string) *goquery.Document {
@@ -417,6 +470,58 @@ func emulateURL(url, userAgent string) *goquery.Document {
 	return doc
 }
 
+func navigateURL(url, userAgent string) *goquery.Document {
+	var opts []func(*chromedp.ExecAllocator)
+	if len(settings.Proxy) > 0 {
+		proxyString := settings.Proxy[0]
+		proxyServer := chromedp.ProxyServer(proxyString)
+		opts = append(chromedp.DefaultExecAllocatorOptions[:], proxyServer)
+	} else {
+		opts = append(chromedp.DefaultExecAllocatorOptions[:])
+	}
+	if len(userAgent) > 0 {
+		opts = append(opts, chromedp.UserAgent(userAgent))
+	}
+	bCtx, cancel := chromedp.NewExecAllocator(context.Background(), opts...)
+	ctx, _ := chromedp.NewContext(bCtx)
+	defer cancel()
+	var outer, frameurl string
+	var ok bool
+	var err error
+
+	err = chromedp.Run(ctx,
+		chromedp.Navigate(url),
+		chromedp.WaitVisible("iframe", chromedp.ByQuery),
+		chromedp.AttributeValue("iframe", "title", &outer, &ok),
+		chromedp.Location(&frameurl),
+	)
+
+	err = chromedp.Run(ctx,
+		chromedp.Navigate(outer),
+		chromedp.WaitVisible("iframe", chromedp.ByQuery),
+		chromedp.AttributeValue("iframe", "src", &outer, &ok),
+		chromedp.Location(&frameurl),
+	)
+
+	var body string
+	err = chromedp.Run(ctx,
+		chromedp.Navigate(outer),
+		chromedp.WaitVisible("#recaptcha-anchor"),
+		chromedp.Click("#recaptcha-anchor", chromedp.ByQuery),
+		// chromedp.WaitVisible("button#recaptcha-audio-button"),
+		// chromedp.Click("button#recaptcha-audio-button", chromedp.ByQuery),
+		// chromedp.InnerHTML(`span#recaptcha-anchor`, &body, chromedp.NodeVisible, chromedp.ByQuery),
+	)
+
+	r := strings.NewReader(body)
+	doc, err := goquery.NewDocumentFromReader(r)
+	if err != nil {
+		logErrors(err)
+		os.Exit(0)
+	}
+	return doc
+}
+
 func getURL(urls []string) <-chan string {
 	c := make(chan string)
 	go func() {
@@ -456,7 +561,7 @@ func worker(jobs <-chan workerJob, results chan<- workerJob, wg *sync.WaitGroup)
 		for job := range jobs {
 			var doc *goquery.Document
 			if settings.JavaScript {
-				doc = emulateURL(job.startURL, userAgent)
+				doc = navigateURL(job.startURL, userAgent)
 			} else {
 				doc = crawlURL(job.startURL, userAgent)
 			}
