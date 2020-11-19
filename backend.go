@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"context"
 	"crypto/tls"
 	"encoding/base64"
@@ -71,6 +72,14 @@ type workerJob struct {
 	parent     string
 	siteMap    *scraping
 	linkOutput map[string]interface{}
+}
+
+type audioPostBody struct {
+	Audio audioPostAudio `json:"audio"`
+}
+
+type audioPostAudio struct {
+	Uri string `json:"uri"`
 }
 
 func clearCache() {
@@ -271,15 +280,28 @@ func selectorTable(doc *goquery.Document, selector *selectors) map[string]interf
 func DownloadFile(filepath string, url string) error {
 
 	// Get the data
-	resp, err := http.Get("")
+	resp, err := http.Get(url)
 	if err != nil {
 		return err
 	}
 	defer resp.Body.Close()
 
 	content, _ := ioutil.ReadAll(resp.Body)
-	// Encode as base64.
-	encoded := base64.StdEncoding.EncodeToString(content)
+
+	audioBody := &audioPostBody{
+		Audio: audioPostAudio{
+			Uri: "",
+		},
+	}
+
+	reqBody, err := json.Marshal(audioBody)
+	
+	// Get the data
+	resp, err := http.Post("https://speech.googleapis.com/v1/speech:recognize?key=AIzaSyAYg5R5b-GqsFP9XlYRgGk2k8sVJTm0xgk", "application/json", bytes.NewBuffer(reqBody))
+		return err
+	}
+	
+	defer resp.Body.Close()
 }
 
 func crawlURL(href, userAgent string) *goquery.Document {
