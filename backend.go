@@ -13,7 +13,6 @@ import (
 	"io"
 	"io/ioutil"
 	"log"
-	"math/rand"
 	"net/http"
 	"net/url"
 	"os"
@@ -22,14 +21,11 @@ import (
 	"strconv"
 	"strings"
 	"sync"
-	"time"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/chromedp/cdproto/cdp"
-	"github.com/chromedp/cdproto/input"
+	"github.com/chromedp/cdproto/target"
 	"github.com/chromedp/chromedp"
 	"github.com/dlclark/regexp2"
-	spline "github.com/esimov/gospline"
 )
 
 var (
@@ -477,7 +473,7 @@ func emulateURL(url, userAgent string) *goquery.Document {
 }
 
 func navigateURL(url, userAgent string) *goquery.Document {
-	var flagDevToolWsUrl = flag.String("devtools-ws-url", "ws://127.0.0.1:9222/devtools/browser/40b0f5af-9aef-4582-b28d-9fadba642f69", "DevTools WebSsocket URL")
+	var flagDevToolWsUrl = flag.String("devtools-ws-url", "ws://127.0.0.1:9222/devtools/browser/8767962f-4cc7-4a2d-9891-73c22da51552", "DevTools WebSsocket URL")
 
 	var opts []func(*chromedp.ExecAllocator)
 	if len(settings.Proxy) > 0 {
@@ -492,157 +488,60 @@ func navigateURL(url, userAgent string) *goquery.Document {
 	}
 
 	bCtx, cancel := chromedp.NewRemoteAllocator(context.Background(), *flagDevToolWsUrl)
-	cpage, _ := chromedp.NewContext(bCtx)
-	cframe1, _ := chromedp.NewContext(bCtx)
-	// ctx, _ := chromedp.NewContext(bCtx)
+	ctx, _ := chromedp.NewContext(bCtx)
 
 	defer cancel()
-	// var outer string
-	// var ok bool
-	var err error
-	var frameNodes []*cdp.Node
-	var checkboxNode *cdp.Node
-	var challengeNode *cdp.Node
 
-	// err = chromedp.Run(ctx,
-	// 	chromedp.Navigate(url),
-	// 	chromedp.WaitVisible("iframe", chromedp.ByQuery),
-	// 	chromedp.AttributeValue("iframe", "src", &outer, &ok),
-	// 	chromedp.Location(&frameurl),
-	// )
+	var checkboxNode *target.Info
+	var challengeNode *target.Info
 
-	err = chromedp.Run(cpage,
+	err := chromedp.Run(ctx,
 		chromedp.Navigate(url),
-		chromedp.WaitVisible("iframe", chromedp.ByQuery),
-		chromedp.Nodes("iframe", &frameNodes),
 	)
 
-	for _, node := range frameNodes {
-		if node.AttributeValue("title") == "recaptcha challenge" {
-			challengeNode = node
+	if err != nil {
+		logErrors(err)
+		os.Exit(0)
+	}
+
+	targets, _ := chromedp.Targets(ctx)
+	for _, t := range targets {
+		if t.Type == "iframe" && strings.Contains(t.URL, "anchor") {
+			checkboxNode = t
 		}
-		if node.AttributeValue("role") == "presentation" {
-			checkboxNode = node
+		if t.Type == "iframe" && strings.Contains(t.URL, "bframe") {
+			challengeNode = t
+			break
 		}
 	}
+
+	ictx, _ := chromedp.NewContext(ctx, chromedp.WithTargetID(checkboxNode.TargetID))
+
+	err = chromedp.Run(
+		ictx, // <-- instead of ctx
+		chromedp.WaitVisible(`#recaptcha-anchor`, chromedp.ByQuery),
+		chromedp.Click(`#recaptcha-anchor`, chromedp.NodeVisible),
+	)
+
+	if err != nil {
+		logErrors(err)
+		os.Exit(0)
+	}
+
+	ictx2, _ := chromedp.NewContext(ctx, chromedp.WithTargetID(challengeNode.TargetID))
+
+	var str = "some text"
+	err = chromedp.Run(
+		ictx2, // <-- instead of ctx
+		chromedp.WaitVisible(`#recaptcha-audio-button`, chromedp.ByQuery),
+		chromedp.Click(`#recaptcha-audio-button`, chromedp.NodeVisible),
+		chromedp.Text(`#audio-response`, &str, chromedp.ByID),
+	)
 
 	var body string
-	var checked string
-	var ok bool
-	// err = chromedp.Run(ctx,
-	// 	chromedp.Navigate(challengeNode.AttributeValue("src")),
-	// 	// chromedp.WaitVisible("#recaptcha-audio-button"),
-	// 	// chromedp.Click("#recaptcha-audio-button", chromedp.ByQuery),
-	// 	chromedp.InnerHTML(`body`, &body, chromedp.NodeVisible, chromedp.ByQuery),
-	// )
-
-	// fmt.Println(body)
-
-	// var CheckboxNode []*cdp.Node
-
-	// err = chromedp.Run(ctx,
-	// 	chromedp.Navigate(checkboxNode.AttributeValue("src")),
-	// 	chromedp.WaitVisible("#recaptcha-anchor", chromedp.ByQuery),
-	// 	chromedp.Nodes("#recaptcha-anchor", &CheckboxNode),
-	// )
-
-	// err = chromedp.Run(ctx,
-	// 	chromedp.MouseClickNode(CheckboxNode[0], chromedp.ButtonLeft),
-	// 	chromedp.Navigate(challengeNode.AttributeValue("src")),
-	// 	chromedp.InnerHTML(`body`, &body, chromedp.NodeVisible, chromedp.ByQuery),
-	// )
-
-	fmt.Println(body)
-
-	var buf []byte
-	var buf1 []byte
-	var buf2 []byte
-	var buf3 []byte
-	var buf4 []byte
-	err = chromedp.Run(cframe1,
-
-		chromedp.Navigate(checkboxNode.AttributeValue("src")),
-		// chromedp.ex("document.getElementById('recaptcha-anchor').click()", &res),
-		// chromedp.WaitVisible(`#recaptcha-anchor`, chromedp.ByID),
-
-		chromedp.Sleep(200*time.Millisecond),
-		// chromedp.MouseEvent(input.MouseMoved, CheckboxNode[0].)
-		mouseMoveTasks(),
-		MouseMoveXY(25, 34),
-		// chromedp.MouseEvent(input.MousePressed, 35, 152, chromedp.ButtonLeft, chromedp.ClickCount(1)),
-		chromedp.Sleep(8*time.Millisecond),
-		// chromedp.MouseClickNode(CheckboxNode[0], chromedp.ButtonLeft),
-		chromedp.Click(`#recaptcha-anchor`, chromedp.NodeVisible),
-		// chromedp.CaptureScreenshot(&buf),
-		chromedp.MouseEvent(input.MouseReleased, 35, 152, chromedp.ButtonLeft),
-		chromedp.CaptureScreenshot(&buf),
-
-		mouseMoveTasks(),
-		MouseMoveXY(25, 34),
-		// chromedp.Click(".recaptcha-checkbox-checkmark", chromedp.NodeVisible),
-		// chromedp.Sleep(2*time.Second),
-		chromedp.WaitVisible(`#recaptcha-anchor`, chromedp.ByID),
-		chromedp.AttributeValue(`#recaptcha-anchor`, "aria-checked", &checked, &ok, chromedp.ByID),
-
-		chromedp.CaptureScreenshot(&buf1),
-		// chromedp.Navigate(challengeNode.AttributeValue("src")),
-		// chromedp.InnerHTML(`body`, &body, chromedp.NodeVisible, chromedp.ByQuery),
-		chromedp.Sleep(5*time.Second),
-
-		chromedp.CaptureScreenshot(&buf2),
-
-		chromedp.Sleep(6*time.Second),
-
-		chromedp.CaptureScreenshot(&buf3),
-
-		chromedp.Sleep(5*time.Second),
-
-		chromedp.CaptureScreenshot(&buf4),
-
-		// chromedp.Sleep(16*time.Second),
-
-		chromedp.Navigate(challengeNode.AttributeValue("src")),
+	err = chromedp.Run(ctx,
 		chromedp.InnerHTML(`body`, &body, chromedp.NodeVisible, chromedp.ByQuery),
 	)
-
-	// var buf []byte
-	// if err := chromedp.Run(ctx,
-	// 	chromedp.Navigate(url),
-	// 	chromedp.Screenshot(`html`, &buf, chromedp.NodeVisible, chromedp.ByQuery)); err != nil {
-	// 	log.Fatal(err)
-	// }
-	if err := ioutil.WriteFile("es.png", buf, 0644); err != nil {
-		log.Fatal(err)
-	}
-
-	if err := ioutil.WriteFile("es1.png", buf1, 0644); err != nil {
-		log.Fatal(err)
-	}
-
-	if err := ioutil.WriteFile("es2.png", buf2, 0644); err != nil {
-		log.Fatal(err)
-	}
-
-	if err := ioutil.WriteFile("es3.png", buf3, 0644); err != nil {
-		log.Fatal(err)
-	}
-
-	if err := ioutil.WriteFile("es4.png", buf4, 0644); err != nil {
-		log.Fatal(err)
-	}
-
-	// fmt.Println(challengeNode.AttributeValue("src"))
-
-	// err = chromedp.Run(ctx2,
-	// 	chromedp.Navigate(challengeNode.AttributeValue("src")),
-	// 	// chromedp.Nodes("iframe", &frameNodes),
-	// 	// chromedp.Navigate(challengeNode.AttributeValue("src")),
-	// 	// chromedp.WaitVisible(".rc-footer", chromedp.ByQuery),
-	// 	// chromedp.Click("#recaptcha-audio-button", chromedp.ByQuery),
-	// 	chromedp.InnerHTML(`body`, &body, chromedp.NodeVisible, chromedp.ByQuery),
-	// )
-
-	fmt.Println(body)
 
 	r := strings.NewReader(body)
 	doc, err := goquery.NewDocumentFromReader(r)
@@ -650,68 +549,8 @@ func navigateURL(url, userAgent string) *goquery.Document {
 		logErrors(err)
 		os.Exit(0)
 	}
+
 	return doc
-
-}
-
-// func Navigate(urlstr string) chromedp.NavigateAction {
-// 	return chromedp.ActionFunc(func(ctx context.Context) error {
-// 		_, _, _, err := page.(urlstr).Do(ctx)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return waitLoaded(ctx)
-// 	})
-// }
-
-func mouseMoveTasks() chromedp.Tasks {
-	tasks := make(chromedp.Tasks, 0)
-
-	var rng = rand.New(rand.NewSource(time.Now().UnixNano()))
-	var points [][]float64
-	var width, height int = 120, 80
-
-	for i := 0; i < 40; i++ {
-		x := randInt(0, width, rng)
-		y := randInt(0, height, rng)
-
-		point := []float64{float64(x), float64(y)}
-		points = append(points, point)
-
-		spline := spline.NewBSpline(points, 3, false)
-		spline.Init()
-
-		X := spline.Interpolate(float64(x), 0.5)[0]
-		Y := spline.Interpolate(float64(y), 0.5)[1]
-
-		tasks = append(tasks, chromedp.Tasks{
-			MouseMoveXY(X, Y),
-		})
-	}
-
-	// for x := 0; x < 36; x++ {
-	// 	tasks = append(tasks, chromedp.Tasks{
-	// 		chromedp.MouseEvent(input.MouseMoved, float64(x), float64(x+1)),
-	// 	})
-	// }
-
-	return tasks
-}
-
-func MouseMoveXY(x, y float64) chromedp.MouseAction {
-	return chromedp.ActionFunc(func(ctx context.Context) error {
-		p := &input.DispatchMouseEventParams{
-			Type: input.MouseMoved,
-			X:    x,
-			Y:    y,
-		}
-
-		return p.Do(ctx)
-	})
-}
-
-func randInt(min, max int, rng *rand.Rand) int {
-	return rng.Intn(max-min) + min
 }
 
 func getURL(urls []string) <-chan string {
