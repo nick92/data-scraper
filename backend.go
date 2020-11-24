@@ -8,7 +8,6 @@ import (
 	"encoding/csv"
 	"encoding/json"
 	"encoding/xml"
-	"flag"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -307,7 +306,7 @@ func selectorTable(doc *goquery.Document, selector *selectors) map[string]interf
 	return table
 }
 
-func GetCatchaText(url string) (string, error) {
+func parseCatchAudio(url string) (string, error) {
 	var speechBody speechRecognitionResponse
 	// Get the data
 	resp, err := http.Get(url)
@@ -318,7 +317,7 @@ func GetCatchaText(url string) (string, error) {
 
 	buf := new(bytes.Buffer)
 
-	// Write the body to the buffer
+	// Write the audio body to the buffer
 	_, err = io.Copy(buf, resp.Body)
 
 	if err != nil {
@@ -337,9 +336,7 @@ func GetCatchaText(url string) (string, error) {
 
 	reqBody, err := json.Marshal(audioBody)
 
-	fmt.Print(string(reqBody))
-
-	// Get the data
+	// pass audio into google speech api
 	speechResp, err := http.Post("https://speech.googleapis.com/v1p1beta1/speech:recognize?key="+settings.Captcha, "application/json", bytes.NewBuffer(reqBody))
 
 	if err != nil {
@@ -347,8 +344,6 @@ func GetCatchaText(url string) (string, error) {
 	}
 
 	defer speechResp.Body.Close()
-
-	fmt.Print(speechResp.Body)
 
 	err = json.NewDecoder(speechResp.Body).Decode(&speechBody)
 
@@ -473,8 +468,6 @@ func emulateURL(url, userAgent string) *goquery.Document {
 }
 
 func navigateURL(url, userAgent string) *goquery.Document {
-	var flagDevToolWsUrl = flag.String("devtools-ws-url", "ws://127.0.0.1:9222/devtools/browser/8767962f-4cc7-4a2d-9891-73c22da51552", "DevTools WebSsocket URL")
-
 	var opts []func(*chromedp.ExecAllocator)
 	if len(settings.Proxy) > 0 {
 		proxyString := settings.Proxy[0]
@@ -487,8 +480,8 @@ func navigateURL(url, userAgent string) *goquery.Document {
 		opts = append(opts, chromedp.UserAgent(userAgent))
 	}
 
-	bCtx, cancel := chromedp.NewRemoteAllocator(context.Background(), *flagDevToolWsUrl)
-	ctx, _ := chromedp.NewContext(bCtx)
+	bCtx, cancel := chromedp.NewExecAllocator(context.Background(), opts...)
+	ctx, cancel := chromedp.NewContext(bCtx)
 
 	defer cancel()
 
@@ -497,6 +490,7 @@ func navigateURL(url, userAgent string) *goquery.Document {
 
 	err := chromedp.Run(ctx,
 		chromedp.Navigate(url),
+		chromedp.WaitReady("iframe", chromedp.ByQuery),
 	)
 
 	if err != nil {
@@ -504,23 +498,32 @@ func navigateURL(url, userAgent string) *goquery.Document {
 		os.Exit(0)
 	}
 
+	// need to get captcha iframe targets ou4t
 	targets, _ := chromedp.Targets(ctx)
+
 	for _, t := range targets {
 		if t.Type == "iframe" && strings.Contains(t.URL, "anchor") {
 			checkboxNode = t
 		}
 		if t.Type == "iframe" && strings.Contains(t.URL, "bframe") {
 			challengeNode = t
-			break
 		}
 	}
-
+	// set context to captcha checkbox iframe
 	ictx, _ := chromedp.NewContext(ctx, chromedp.WithTargetID(checkboxNode.TargetID))
 
+	var ok bool
+	var checked string
+
 	err = chromedp.Run(
-		ictx, // <-- instead of ctx
-		chromedp.WaitVisible(`#recaptcha-anchor`, chromedp.ByQuery),
-		chromedp.Click(`#recaptcha-anchor`, chromedp.NodeVisible),
+		ctx,
+		chromedp.WaitVisible(`#recaptcha-anchor`, chromedp.NodeVisible),
+		chromedp.Click(`#recaptcha-anchor`, chromedp.ByID),
+	)
+
+	err = chromedp.Run(
+		ictx,
+		chromedp.AttributeValue(`#recaptcha-anchor`, "aria-checked", &checked, &ok),
 	)
 
 	if err != nil {
@@ -528,15 +531,41 @@ func navigateURL(url, userAgent string) *goquery.Document {
 		os.Exit(0)
 	}
 
-	ictx2, _ := chromedp.NewContext(ctx, chromedp.WithTargetID(challengeNode.TargetID))
+	isCheched, _ := strconv.ParseBool(checked)
 
-	var str = "some text"
-	err = chromedp.Run(
-		ictx2, // <-- instead of ctx
-		chromedp.WaitVisible(`#recaptcha-audio-button`, chromedp.ByQuery),
-		chromedp.Click(`#recaptcha-audio-button`, chromedp.NodeVisible),
-		chromedp.Text(`#audio-response`, &str, chromedp.ByID),
-	)
+	if !isCheched {
+		var audioSource *string
+		ictx2, _ := chromedp.NewContext(ctx, chromedp.WithTargetID(challengeNode.TargetID))
+
+		err = chromedp.Run(
+			ictx2,
+			chromedp.WaitVisible(`#recaptcha-audio-button`, chromedp.ByID),
+			chromedp.Click(`#recaptcha-audio-button`, chromedp.NodeVisible),
+			chromedp.WaitVisible(`#audio-response`, chromedp.ByID),
+			chromedp.AttributeValue(`#audio-source`, "src", audioSource, &ok),
+		)
+
+		if err != nil {
+			logErrors(err)
+			os.Exit(0)
+		}
+
+		if audioSource != nil {
+			text, err := parseCatchAudio(*audioSource)
+
+			if err != nil {
+				logErrors(err)
+				os.Exit(0)
+			}
+
+			err = chromedp.Run(
+				ictx2,
+				chromedp.WaitVisible(`#audio-response`, chromedp.ByID),
+				chromedp.SetValue(`#audio-response`, text, chromedp.ByID),
+				chromedp.Click(`#recaptcha-verify-button`, chromedp.NodeVisible),
+			)
+		}
+	}
 
 	var body string
 	err = chromedp.Run(ctx,
